@@ -3,6 +3,11 @@
 The official product site for **ChatZ**, the friend-only screen-time app for Android.
 Static, dependency-free, dark-first — built to feel like a premium consumer product.
 
+**Live:** https://chatz-website.vercel.app · **Repo:** https://github.com/editsu4k-coder/chatz-website
+
+Every push to `main` auto-deploys to production via the Vercel ↔ GitHub connection
+(Vercel GitHub App, all-repositories scope).
+
 ## Pages
 
 | Route | Purpose |
@@ -25,8 +30,8 @@ Opening `index.html` directly from disk also works (the GitHub release fetch run
 
 ## Deploy
 
-Upload the folder as-is to any static host (GitHub Pages, Netlify, Vercel, Cloudflare Pages).
-No build step. Suggested includes: everything except `serve.js` and `README.md` (harmless if left in).
+Already deployed: pushes to `main` deploy automatically (Vercel project `world-vault/chatz-website`).
+To deploy from another machine, import the repo at [vercel.com/new](https://vercel.com/new) — no build settings needed.
 
 ## Configuration — single source
 
