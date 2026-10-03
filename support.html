@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Support — ChatZ</title>
+  <meta name="description" content="ChatZ support: email and Telegram contacts, plus fixes for restricted settings, missing stats, background sync and notifications." />
+  <meta name="theme-color" content="#070709" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="preload" href="assets/fonts/InterVariable.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="css/styles.css" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="ChatZ" />
+  <meta property="og:title" content="Support — ChatZ" />
+  <meta property="og:description" content="Get help with ChatZ — real humans, quick answers." />
+  <meta property="og:image" content="assets/og.png" />
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+  <symbol id="i-arrow-right" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></symbol>
+  <symbol id="i-send" viewBox="0 0 24 24"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></symbol>
+  <symbol id="i-buoy" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><line x1="4.93" y1="4.93" x2="9.17" y2="9.17"/><line x1="14.83" y1="14.83" x2="19.07" y2="19.07"/><line x1="14.83" y1="9.17" x2="19.07" y2="4.93"/><line x1="4.93" y1="19.07" x2="9.17" y2="14.83"/></symbol>
+  <symbol id="i-download" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></symbol>
+  <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M3 21v-5h5"/></symbol>
+  <symbol id="i-external" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></symbol>
+  <symbol id="i-activity" viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></symbol>
+</svg>
+
+<header class="nav" id="siteNav">
+  <div class="container nav__inner">
+    <a class="brand" href="index.html" aria-label="ChatZ — home">
+      <span class="brand__mark" aria-hidden="true">
+        <svg viewBox="0 0 120 120" width="26" height="26"><path d="M62 22c20.4 0 36 14.3 36 32 0 17.7-15.6 32-36 32-3.6 0-7.1-.5-10.3-1.3l-13.4 8.2c-1.6 1-3.7-.3-3.4-2.2l1.9-11.9C29.5 73.4 26 65.6 26 54c0-17.7 15.6-32 36-32z" fill="none" stroke="currentColor" stroke-width="6.5" stroke-linejoin="round"/><path d="M48 42h32l-22 28h22" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+      <span class="brand__word">Chat<b>Z</b></span>
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="index.html#product">Product</a>
+      <a href="index.html#features">Features</a>
+      <a href="index.html#how">How it works</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="faq.html">FAQ</a>
+      <a href="support.html" aria-current="page">Support</a>
+    </nav>
+    <div class="nav__actions">
+      <a class="btn btn--white btn--sm" href="index.html#download">Download</a>
+      <button class="nav__burger" type="button" aria-expanded="false" aria-controls="mobileMenu" aria-label="Open menu">
+        <span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <nav class="mobile-menu__links" aria-label="Mobile">
+      <a href="index.html#product">Product</a>
+      <a href="index.html#features">Features</a>
+      <a href="index.html#how">How it works</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="faq.html">FAQ</a>
+      <a href="support.html">Support</a>
+    </nav>
+    <div class="mobile-menu__foot">
+      <a class="btn btn--pink" href="index.html#download">Download ChatZ</a>
+      <span class="mobile-menu__meta">Free · Android 6.0+ · <span data-release="version">1.7</span></span>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <section class="page-hero">
+    <div class="hero__bg" aria-hidden="true"><div class="hero__glow"></div><div class="hero__noise"></div></div>
+    <div class="container">
+      <p class="eyebrow reveal-hero rh-1">Support</p>
+      <h1 class="h1 reveal-hero rh-2">We're here<br/>to help.</h1>
+      <p class="lede reveal-hero rh-3">Real humans, quick answers. Most issues are solved below in under a minute.</p>
+    </div>
+  </section>
+
+  <section class="section doc">
+    <div class="container doc__layout doc__layout--solo">
+      <div class="doc__body">
+
+        <h2 class="faq-group reveal">Contact</h2>
+        <div class="contact-cards reveal">
+          <a class="contact-card" href="mailto:chatz.org@gmail.com">
+            <svg class="icon"><use href="#i-buoy"/></svg>
+            <div><b>ChatZ Support</b><span>Product help, privacy requests, account deletion · chatz.org@gmail.com</span></div>
+            <em>Replies within 24h on weekdays</em>
+          </a>
+          <a class="contact-card" href="mailto:Mirmajid@proton.me">
+            <svg class="icon"><use href="#i-mail"/></svg>
+            <div><b>Developer / business contact</b><span>Partnerships and everything else · Mirmajid@proton.me</span></div>
+          </a>
+          <a class="contact-card" href="https://t.me/Mirmajid01" target="_blank" rel="noopener noreferrer">
+            <svg class="icon"><use href="#i-send"/></svg>
+            <div><b>Telegram</b><span>@Mirmajid01 — quickest way to reach the developer</span></div>
+            <em>Fastest</em>
+          </a>
+        </div>
+
+        <h2 class="faq-group reveal">Self-serve fixes</h2>
+
+        <section class="guide reveal" id="restricted-settings">
+          <div class="guide__head">
+            <svg class="icon"><use href="#i-shield"/></svg>
+            <h3>Screen-time access blocked or greyed out?</h3>
+          </div>
+          <p>Android 13+ blocks sensitive permissions — like Usage access — for apps installed outside the Play Store. The toggle shows a <b>“Restricted setting”</b> warning. This is Android being careful with sideloaded apps, not an error caused by ChatZ. You unlock it once per device:</p>
+          <ol class="guide__steps">
+            <li>Open ChatZ's <b>App info</b> (long-press the ChatZ icon → App info).</li>
+            <li>Tap the <b>⋮ menu</b> at the top-right — it may be called <b>“More”</b> on some phones (Oppo/ColorOS, realme).</li>
+            <li>Choose <b>“Allow restricted settings”</b> and confirm with your PIN, pattern or fingerprint.</li>
+            <li>Come back and toggle <b>Usage access</b> ON — ChatZ re-checks automatically.</li>
+          </ol>
+          <p class="guide__fine">ChatZ always shows the real permission state and never fakes a grant — if Usage access is off, you'll see an honest “no access” state instead of made-up numbers.</p>
+        </section>
+
+        <section class="guide reveal">
+          <div class="guide__head">
+            <svg class="icon"><use href="#i-activity"/></svg>
+            <h3>Stats missing or out of date</h3>
+          </div>
+          <p>Two usual causes:</p>
+          <ol class="guide__steps">
+            <li><b>Usage access was revoked</b> — ChatZ shows a permission screen; re-grant it from there.</li>
+            <li><b>Android deferred the background sync</b> — WorkManager runs about every 15 minutes, but battery saver or aggressive OEMs can delay it. Opening the app refreshes immediately.</li>
+          </ol>
+        </section>
+
+        <section class="guide reveal">
+          <div class="guide__head">
+            <svg class="icon"><use href="#i-refresh"/></svg>
+            <h3>Keep background sync reliable</h3>
+          </div>
+          <p>For stats that update even when ChatZ is closed, keep ChatZ exempt from battery optimization: Me → Settings → Permissions → <b>Background activity</b>. Each row there opens the exact Android settings screen, and status re-checks automatically when you come back.</p>
+        </section>
+
+        <section class="guide reveal">
+          <div class="guide__head">
+            <svg class="icon"><use href="#i-send"/></svg>
+            <h3>Notifications not arriving</h3>
+          </div>
+          <p>Check your in-app notification preferences in the profile, and make sure Android notifications for ChatZ are on (Me → Settings → Permissions shows the live state). Background delivery depends on Google Play services; ChatZ also shows unread dots in the app, so you never miss anything important.</p>
+        </section>
+
+        <div class="faq-foot reveal">
+          <svg class="icon"><use href="#i-download"/></svg>
+          <span>Looking for the app? <a href="index.html#download">Download the latest release</a> — or browse the <a href="faq.html">full FAQ</a>.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container footer__base footer__base--solo">
+    <span>© 2026 ChatZ. All rights reserved.</span>
+    <span><a href="index.html">Home</a> · <a href="privacy.html">Privacy</a> · <a href="faq.html">FAQ</a> · <a href="index.html#download">Download</a></span>
+  </div>
+</footer>
+
+<div class="cursor" id="cursor" aria-hidden="true"></div>
+<script src="js/site-config.js"></script>
+<script src="js/main.js"></script>
+<script src="js/release.js"></script>
+</body>
+</html>

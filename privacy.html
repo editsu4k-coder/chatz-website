@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Privacy — ChatZ</title>
+  <meta name="description" content="How ChatZ handles your data: what is collected, what friends can see, how long it is kept, and the controls you have. No feed, no followers, no ads, no tracking." />
+  <meta name="theme-color" content="#070709" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="preload" href="assets/fonts/InterVariable.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="css/styles.css" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="ChatZ" />
+  <meta property="og:title" content="Privacy — ChatZ" />
+  <meta property="og:description" content="What ChatZ collects, what friends can see, and the controls you have — described plainly." />
+  <meta property="og:image" content="assets/og.png" />
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+  <symbol id="i-arrow-right" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></symbol>
+  <symbol id="i-shield-check" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></symbol>
+  <symbol id="i-send" viewBox="0 0 24 24"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></symbol>
+  <symbol id="i-buoy" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><line x1="4.93" y1="4.93" x2="9.17" y2="9.17"/><line x1="14.83" y1="14.83" x2="19.07" y2="19.07"/><line x1="14.83" y1="9.17" x2="19.07" y2="4.93"/><line x1="4.93" y1="19.07" x2="9.17" y2="14.83"/></symbol>
+  <symbol id="i-download" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></symbol>
+</svg>
+
+<header class="nav" id="siteNav">
+  <div class="container nav__inner">
+    <a class="brand" href="index.html" aria-label="ChatZ — home">
+      <span class="brand__mark" aria-hidden="true">
+        <svg viewBox="0 0 120 120" width="26" height="26"><path d="M62 22c20.4 0 36 14.3 36 32 0 17.7-15.6 32-36 32-3.6 0-7.1-.5-10.3-1.3l-13.4 8.2c-1.6 1-3.7-.3-3.4-2.2l1.9-11.9C29.5 73.4 26 65.6 26 54c0-17.7 15.6-32 36-32z" fill="none" stroke="currentColor" stroke-width="6.5" stroke-linejoin="round"/><path d="M48 42h32l-22 28h22" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+      <span class="brand__word">Chat<b>Z</b></span>
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="index.html#product">Product</a>
+      <a href="index.html#features">Features</a>
+      <a href="index.html#how">How it works</a>
+      <a href="privacy.html" aria-current="page">Privacy</a>
+      <a href="faq.html">FAQ</a>
+      <a href="support.html">Support</a>
+    </nav>
+    <div class="nav__actions">
+      <a class="btn btn--white btn--sm" href="index.html#download">Download</a>
+      <button class="nav__burger" type="button" aria-expanded="false" aria-controls="mobileMenu" aria-label="Open menu">
+        <span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <nav class="mobile-menu__links" aria-label="Mobile">
+      <a href="index.html#product">Product</a>
+      <a href="index.html#features">Features</a>
+      <a href="index.html#how">How it works</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="faq.html">FAQ</a>
+      <a href="support.html">Support</a>
+    </nav>
+    <div class="mobile-menu__foot">
+      <a class="btn btn--pink" href="index.html#download">Download ChatZ</a>
+      <span class="mobile-menu__meta">Free · Android 6.0+ · <span data-release="version">1.7</span></span>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <section class="page-hero">
+    <div class="hero__bg" aria-hidden="true"><div class="hero__glow"></div><div class="hero__noise"></div></div>
+    <div class="container">
+      <p class="eyebrow reveal-hero rh-1">Privacy</p>
+      <h1 class="h1 reveal-hero rh-2">Your activity.<br/>Your control.</h1>
+      <p class="lede reveal-hero rh-3">This page mirrors the privacy policy shown in the app
+        (Me → Settings → Privacy) so you can read it before you install anything.</p>
+    </div>
+  </section>
+
+  <section class="section doc">
+    <div class="container doc__layout">
+      <nav class="doc__toc reveal" aria-label="On this page">
+        <h4>On this page</h4>
+        <a href="#what">What ChatZ is</a>
+        <a href="#collect">What we collect</a>
+        <a href="#sharing">How sharing works</a>
+        <a href="#retention">How long data is kept</a>
+        <a href="#rights">Your controls and rights</a>
+        <a href="#children">Children</a>
+        <a href="#permissions">Android permissions</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <article class="doc__body">
+        <div class="doc__updated reveal in">
+          <svg class="icon"><use href="#i-shield"/></svg>
+          <span>Last updated <b>October 1, 2026</b>. This policy describes what the current version of ChatZ actually does — nothing more.</span>
+        </div>
+
+        <section id="what" class="doc__sec reveal">
+          <h2>1. What ChatZ is</h2>
+          <p>ChatZ is a private, friend-only screen-time app. You sign in with Google (through Firebase Authentication), and your data is stored in Google Firebase (Cloud Firestore). There is no public feed, no follower system, no advertising, and no third-party analytics SDKs.</p>
+        </section>
+
+        <section id="collect" class="doc__sec reveal">
+          <h2>2. What we collect</h2>
+          <p><b>Account &amp; profile.</b> Your Google account email and user ID, the display name and unique @handle you choose, your avatar selection, an optional bio, date of birth and education, and your daily screen-time goal. The bio, date of birth and education are stored privately — friends never see them. ChatZ does not use your Google profile photo; it ships its own avatar set.</p>
+          <p><b>Device usage</b> (only while you grant Usage access). ChatZ reads Android's usage events on your device and uploads a summary of today: your screen time (total and per app), how many apps you opened, how many notifications appeared (the count only — never their content), device model and Android version, battery level and charging state, and how much Wi-Fi / mobile data was used today. It also sees whether you're currently on Wi-Fi or mobile data.</p>
+          <p><b>What is not collected.</b> Your location, contacts, photos or files, camera or microphone, the contents of your notifications or other apps' messages, browser history, keystrokes, or advertising identifiers. ChatZ does not read your Wi-Fi network name — that would require location permission, which ChatZ never asks for.</p>
+          <p><b>Social data.</b> Friend requests and connections, messages you send, reactions and comments on stat cards, in-app notifications, conversation read state, your daily-use streak (the count of consecutive days you've opened ChatZ, shown to friends), and presence (online / last seen) so friends can tell when you're around. If you block someone the block is stored so the backend can enforce it — blocked people can't read your profile or stats, message you, or see your presence. If you report someone, the report is stored privately: the reported person can never read it or see who reported them.</p>
+        </section>
+
+        <section id="sharing" class="doc__sec reveal">
+          <h2>3. How sharing works</h2>
+          <p>Your device stats are visible only to friends you've accepted — enforced by server-side security rules, not just by the app's interface. In Profile → Privacy you switch individual categories on or off. When a category is off, ChatZ stops uploading it: the stored copy is rewritten immediately without that data, so a friend can't read the disabled category — not even an older value — and the app doesn't show what isn't shared. A disabled category never falls back to zero or a placeholder; it simply isn't there.</p>
+          <p>Home shows your current mode. <b>Active</b> shares your stats according to your individual category switches. <b>Silent</b> stops sharing entirely: friends immediately stop receiving your numbers and see “Stats sharing is paused” instead, and you appear offline until you switch back. Silent never changes your category settings — returning to Active resumes exactly what you had switched on.</p>
+        </section>
+
+        <section id="retention" class="doc__sec reveal">
+          <h2>4. How long data is kept</h2>
+          <p><b>Device snapshot.</b> Your device stats live in a single document per account, and each successful sync <b>replaces</b> the previous one — there is no archive of past snapshots. Sync runs about every 15 minutes when Android allows background work, and whenever you open the app; because Android may defer background jobs, the stored copy can lag behind your phone.</p>
+          <p><b>Temporary activity.</b> Reactions, comments and notifications are stamped to expire 24 hours after they're created, and the app stops showing them at that point. The actual deletion is done by a scheduled server cleanup and can lag behind the expiry time, so treat expiry as “no longer shown in the app” rather than “removed at the exact minute”. Daily stat cards, messages, friend connections and presence have no automatic expiry — they stay on the server so the features keep working.</p>
+          <p><b>Deletion.</b> Signing out removes your session from this device but keeps your account. There is no in-app account-deletion button yet — email ChatZ Support to have your account and data deleted. Turning a category off immediately rewrites your stored snapshot without that category — the old values are gone as soon as the app applies the change, not at the next background sync. While Silent mode is on, your stored snapshot is replaced with a masked copy, and turning Silent off restores a fresh snapshot built from your current settings.</p>
+        </section>
+
+        <section id="rights" class="doc__sec reveal">
+          <h2>5. Your controls and rights</h2>
+          <p>You can revoke any Android permission at any time in Android Settings (ChatZ → Settings → Permissions takes you straight to each one) and ChatZ stops using it immediately. In the app you control privacy categories, the Active / Silent mode switch, blocking, and your profile content. For access, correction or deletion requests — including GDPR, UK-GDPR, CCPA and LGPD rights — contact ChatZ Support at <a class="doc__link" href="mailto:chatz.org@gmail.com">chatz.org@gmail.com</a>.</p>
+        </section>
+
+        <section id="children" class="doc__sec reveal">
+          <h2>6. Children</h2>
+          <p>ChatZ is not for children under 13 (or under 16 in the EU). If you believe a child under that age is using ChatZ, contact ChatZ Support and the account will be removed.</p>
+        </section>
+
+        <section id="permissions" class="doc__sec reveal">
+          <h2>7. Android permissions ChatZ asks for</h2>
+          <ul>
+            <li><b>Usage access</b> (special access) — read screen time and app usage. Revocable in Settings → Special app access → Usage access.</li>
+            <li><b>Notifications</b> — friend requests, reactions, comments and message alerts. Revocable in Settings → Apps → ChatZ → Notifications.</li>
+            <li><b>Unrestricted background activity</b> (battery optimization exemption) — so syncing isn't frozen. Revocable in Settings → Battery.</li>
+            <li><b>Internet, network &amp; Wi-Fi state</b> — connecting to Firebase and telling Wi-Fi from mobile data. Granted at install.</li>
+          </ul>
+          <p>ChatZ does not ask for camera, microphone, location, contacts, media or storage permissions — no feature needs them.</p>
+        </section>
+
+        <section id="contact" class="doc__sec reveal">
+          <h2>8. Contact</h2>
+          <div class="contact-cards">
+            <a class="contact-card" href="mailto:chatz.org@gmail.com">
+              <svg class="icon"><use href="#i-buoy"/></svg>
+              <div><b>ChatZ Support</b><span>Product help, privacy requests, account deletion · chatz.org@gmail.com</span></div>
+            </a>
+            <a class="contact-card" href="mailto:Mirmajid@proton.me">
+              <svg class="icon"><use href="#i-mail"/></svg>
+              <div><b>Developer / business contact</b><span>Partnerships and everything else · Mirmajid@proton.me</span></div>
+            </a>
+            <a class="contact-card" href="https://t.me/Mirmajid01" target="_blank" rel="noopener noreferrer">
+              <svg class="icon"><use href="#i-send"/></svg>
+              <div><b>Telegram</b><span>@Mirmajid01 — quickest way to reach the developer</span></div>
+            </a>
+          </div>
+        </section>
+      </article>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container footer__base footer__base--solo">
+    <span>© 2026 ChatZ. All rights reserved.</span>
+    <span><a href="index.html">Home</a> · <a href="faq.html">FAQ</a> · <a href="support.html">Support</a> · <a href="index.html#download">Download</a></span>
+  </div>
+</footer>
+
+<div class="cursor" id="cursor" aria-hidden="true"></div>
+<script src="js/site-config.js"></script>
+<script src="js/main.js"></script>
+<script src="js/release.js"></script>
+</body>
+</html>

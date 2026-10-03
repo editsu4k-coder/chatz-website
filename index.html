@@ -1,0 +1,1164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>ChatZ — Screen time, shared with your circle</title>
+  <meta name="description" content="ChatZ is a friend-only Android app that shares today's screen time, app usage and activity status with the people you've actually accepted. No feed. No followers. No tracking." />
+  <meta name="theme-color" content="#070709" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="preload" href="assets/fonts/InterVariable.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="css/styles.css" />
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="ChatZ" />
+  <meta property="og:title" content="ChatZ — Screen time, shared with your circle" />
+  <meta property="og:description" content="Share today's screen time, apps and activity with the friends you've actually accepted. No feed. No followers. No tracking." />
+  <meta property="og:image" content="assets/og.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="ChatZ — Screen time, shared with your circle" />
+  <meta name="twitter:description" content="Share today's screen time, apps and activity with the friends you've actually accepted. No feed. No followers. No tracking." />
+  <meta name="twitter:image" content="assets/og.png" />
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- ============ Icon sprite ============ -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></symbol>
+  <symbol id="i-activity" viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24"><line x1="6" y1="20" x2="6" y2="14"/><line x1="12" y1="20" x2="12" y2="8"/><line x1="18" y1="20" x2="18" y2="4"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+  <symbol id="i-message" viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></symbol>
+  <symbol id="i-shield-check" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></symbol>
+  <symbol id="i-zap" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10"/></symbol>
+  <symbol id="i-download" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></symbol>
+  <symbol id="i-arrow-right" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></symbol>
+  <symbol id="i-arrow-down" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></symbol>
+  <symbol id="i-eye-off" viewBox="0 0 24 24"><path d="M9.88 9.88a3 3 0 1 0 4.24 4.24"/><path d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"/><path d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"/><line x1="2" y1="2" x2="22" y2="22"/></symbol>
+  <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></symbol>
+  <symbol id="i-flame" viewBox="0 0 24 24"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></symbol>
+  <symbol id="i-send" viewBox="0 0 24 24"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></symbol>
+  <symbol id="i-wifi" viewBox="0 0 24 24"><path d="M5 13a10 10 0 0 1 14 0"/><path d="M8.5 16.5a5 5 0 0 1 7 0"/><path d="M2 8.82a15 15 0 0 1 20 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></symbol>
+  <symbol id="i-battery" viewBox="0 0 24 24"><rect width="16" height="10" x="2" y="7" rx="2"/><line x1="22" y1="11" x2="22" y2="13"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></symbol>
+  <symbol id="i-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></symbol>
+  <symbol id="i-copy" viewBox="0 0 24 24"><rect width="13" height="13" x="9" y="9" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></symbol>
+  <symbol id="i-external" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></symbol>
+  <symbol id="i-buoy" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><line x1="4.93" y1="4.93" x2="9.17" y2="9.17"/><line x1="14.83" y1="14.83" x2="19.07" y2="19.07"/><line x1="14.83" y1="9.17" x2="19.07" y2="4.93"/><line x1="4.93" y1="19.07" x2="9.17" y2="14.83"/></symbol>
+  <symbol id="i-smartphone" viewBox="0 0 24 24"><rect width="14" height="20" x="5" y="2" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></symbol>
+  <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M3 21v-5h5"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect width="18" height="11" x="3" y="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol>
+  <symbol id="i-github" viewBox="0 0 24 24"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></symbol>
+  <symbol id="i-heart" viewBox="0 0 24 24"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></symbol>
+</svg>
+
+<!-- ============ Navigation ============ -->
+<header class="nav" id="siteNav">
+  <div class="container nav__inner">
+    <a class="brand" href="index.html" aria-label="ChatZ — home">
+      <span class="brand__mark" aria-hidden="true">
+        <svg viewBox="0 0 120 120" width="26" height="26"><path d="M62 22c20.4 0 36 14.3 36 32 0 17.7-15.6 32-36 32-3.6 0-7.1-.5-10.3-1.3l-13.4 8.2c-1.6 1-3.7-.3-3.4-2.2l1.9-11.9C29.5 73.4 26 65.6 26 54c0-17.7 15.6-32 36-32z" fill="none" stroke="currentColor" stroke-width="6.5" stroke-linejoin="round"/><path d="M48 42h32l-22 28h22" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+      <span class="brand__word">Chat<b>Z</b></span>
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="#product">Product</a>
+      <a href="#features">Features</a>
+      <a href="#how">How it works</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="faq.html">FAQ</a>
+      <a href="support.html">Support</a>
+    </nav>
+    <div class="nav__actions">
+      <a class="btn btn--white btn--sm" href="#download">Download</a>
+      <button class="nav__burger" type="button" aria-expanded="false" aria-controls="mobileMenu" aria-label="Open menu">
+        <span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <nav class="mobile-menu__links" aria-label="Mobile">
+      <a href="#product">Product</a>
+      <a href="#features">Features</a>
+      <a href="#how">How it works</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="faq.html">FAQ</a>
+      <a href="support.html">Support</a>
+    </nav>
+    <div class="mobile-menu__foot">
+      <a class="btn btn--pink" href="#download">Download ChatZ</a>
+      <span class="mobile-menu__meta">Free · Android 6.0+ · <span data-release="version">1.7</span></span>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ============ Hero ============ -->
+<section class="hero" aria-label="Introduction">
+  <div class="hero__bg" aria-hidden="true">
+    <div class="hero__glow"></div>
+    <div class="hero__grid"></div>
+    <div class="hero__noise"></div>
+  </div>
+
+  <div class="container hero__inner">
+    <div class="hero__copy">
+      <a class="hero__chip reveal-hero rh-1" href="#download">
+        <span class="hero__chip-dot" aria-hidden="true"></span>
+        Free for Android · v<span data-release="version">1.7</span>
+      </a>
+      <h1 class="hero__title">
+        <span class="hero__line reveal-hero rh-1">Your circle.</span>
+        <span class="hero__line hero__line--accent reveal-hero rh-2">Your digital life.</span>
+      </h1>
+      <p class="hero__sub reveal-hero rh-3">
+        ChatZ shares today's screen time, apps and activity status with the
+        friends you've actually accepted — and nothing else.
+        You decide what they see.
+      </p>
+      <div class="hero__ctas reveal-hero rh-4">
+        <a class="btn btn--white btn--lg magnetic" href="#download">
+          <svg class="icon" aria-hidden="true"><use href="#i-download"/></svg>
+          Download ChatZ
+        </a>
+        <a class="btn btn--ghost btn--lg magnetic" href="#how">
+          See how it works
+          <svg class="icon" aria-hidden="true"><use href="#i-arrow-down"/></svg>
+        </a>
+      </div>
+      <p class="hero__meta reveal-hero rh-5">
+        Android 6.0+ · <span data-release="size">8.8 MB</span> · No ads · No tracking
+      </p>
+    </div>
+
+    <div class="hero__stage reveal-hero rh-3">
+      <!-- Floating chips -->
+      <div class="hero-chip hero-chip--a" aria-hidden="true">
+        <span class="dot dot--live"></span>
+        <b>3 friends</b>&nbsp;online now
+      </div>
+      <div class="hero-chip hero-chip--b" aria-hidden="true">
+        <svg class="icon icon--warn" aria-hidden="true"><use href="#i-flame"/></svg>
+        <b>6-day</b>&nbsp;streak
+      </div>
+      <div class="hero-chip hero-chip--c" aria-hidden="true">
+        <svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg>
+        Top app · <b>Chrome</b>&nbsp;1h 42m
+      </div>
+
+      <!-- Phone -->
+      <div class="phone hero__phone" aria-hidden="true">
+        <div class="phone__notch"></div>
+        <div class="phone__screen phone__screen--pulse">
+          <div class="p-status">
+            <span class="p-status__time">9:41</span>
+            <span class="p-status__icons">
+              <svg viewBox="0 0 16 12" class="p-sig"><rect x="0" y="7" width="3" height="5" rx="1"/><rect x="4.5" y="5" width="3" height="7" rx="1"/><rect x="9" y="2.5" width="3" height="9.5" rx="1"/><rect x="13" y="0" width="3" height="12" rx="1" opacity=".35"/></svg>
+              <svg class="p-batt" viewBox="0 0 25 12"><rect x="0.5" y="0.5" width="21" height="11" rx="3" fill="none" stroke="currentColor" opacity=".4"/><rect x="2.5" y="2.5" width="14" height="7" rx="1.5"/><rect x="23" y="4" width="2" height="4" rx="1" opacity=".4"/></svg>
+            </span>
+          </div>
+
+          <div class="p-head">
+            <div>
+              <div class="p-head__title">Pulse</div>
+              <div class="p-head__date">Today · Thursday</div>
+            </div>
+            <div class="p-head__side">
+              <span class="p-streak"><svg class="icon"><use href="#i-flame"/></svg>6</span>
+              <span class="p-avatar" data-avatar="cat" data-palette="4"></span>
+            </div>
+          </div>
+
+          <div class="p-mode" role="presentation">
+            <span class="p-mode__opt p-mode__opt--on"><svg class="icon"><use href="#i-zap"/></svg>Active</span>
+            <span class="p-mode__opt"><svg class="icon"><use href="#i-moon"/></svg>Silent</span>
+          </div>
+
+          <div class="p-today">
+            <div class="p-today__ringwrap">
+              <svg class="p-today__ring" viewBox="0 0 72 72">
+                <circle class="p-today__ring-bg" cx="36" cy="36" r="30"/>
+                <circle class="p-today__ring-fg" cx="36" cy="36" r="30" data-ring="0.62"/>
+              </svg>
+              <div class="p-today__goal">62%</div>
+            </div>
+            <div class="p-today__nums">
+              <div class="p-today__label">Screen time today</div>
+              <div class="p-today__value"><span data-count="268" data-format="duration">4h 28m</span></div>
+              <div class="p-today__sub">Goal · 7h 00m</div>
+            </div>
+          </div>
+
+          <div class="p-card">
+            <div class="p-card__label">Top apps today</div>
+            <div class="p-app"><span class="p-app__dot" style="--c:#5A8FEF"></span><span class="p-app__name">Chrome</span><span class="p-app__bar"><i style="--w:72%"></i></span><span class="p-app__val">1h 42m</span></div>
+            <div class="p-app"><span class="p-app__dot" style="--c:#F06C9D"></span><span class="p-app__name">ChatZ</span><span class="p-app__bar"><i style="--w:41%"></i></span><span class="p-app__val">58m</span></div>
+            <div class="p-app"><span class="p-app__dot" style="--c:#F2C23C"></span><span class="p-app__name">YouTube</span><span class="p-app__bar"><i style="--w:33%"></i></span><span class="p-app__val">47m</span></div>
+          </div>
+
+          <div class="p-card p-friend">
+            <div class="p-friend__row">
+              <span class="p-avatar" data-avatar="fox" data-palette="0"></span>
+              <div class="p-friend__meta">
+                <div class="p-friend__name">Mira <span class="dot dot--live"></span></div>
+                <div class="p-friend__sub">Online · 4h 12m today</div>
+              </div>
+              <span class="p-chip">Top · Chrome</span>
+            </div>
+          </div>
+
+          <div class="p-tabs">
+            <span class="p-tab p-tab--on"><svg class="icon"><use href="#i-activity"/></svg>Pulse</span>
+            <span class="p-tab"><svg class="icon"><use href="#i-users"/></svg>Friends</span>
+            <span class="p-tab"><svg class="icon"><use href="#i-message"/></svg>Chats</span>
+            <span class="p-tab"><svg class="icon"><use href="#i-smartphone"/></svg>Me</span>
+          </div>
+        </div>
+        <div class="phone__shadow" aria-hidden="true"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero__fade" aria-hidden="true"></div>
+</section>
+
+<!-- ============ Manifesto strip ============ -->
+<div class="strip" role="presentation">
+  <div class="container strip__inner">
+    <span>No feed</span><i></i>
+    <span>No followers</span><i></i>
+    <span>No ads</span><i></i>
+    <span>No tracking</span>
+  </div>
+</div>
+
+<!-- ============ What is ChatZ ============ -->
+<section class="section" id="product">
+  <div class="container product">
+    <div class="product__copy">
+      <p class="eyebrow reveal">What is ChatZ?</p>
+      <h2 class="h2 reveal">Your digital life,<br/>shared with your people.</h2>
+      <p class="lede reveal">
+        ChatZ reads what your phone already knows — screen time, top apps,
+        data usage — and shares a simple daily summary with a circle of
+        friends you personally accepted.
+      </p>
+      <p class="body reveal">
+        There's no feed to scroll and no strangers to meet. Just the people
+        you actually know, being a little more present in each other's day.
+      </p>
+      <ul class="product__list reveal">
+        <li><svg class="icon"><use href="#i-clock"/></svg>Screen time</li>
+        <li><svg class="icon"><use href="#i-chart"/></svg>App usage</li>
+        <li><svg class="icon"><use href="#i-wifi"/></svg>Data usage</li>
+        <li><svg class="icon"><use href="#i-activity"/></svg>Activity status</li>
+      </ul>
+      <a class="textlink reveal" href="#features">See everything ChatZ shares
+        <svg class="icon"><use href="#i-arrow-right"/></svg></a>
+    </div>
+
+    <div class="product__visual reveal" aria-hidden="true">
+      <div class="mini-ui">
+        <div class="mini-ui__head">
+          <span class="p-avatar" data-avatar="cat" data-palette="4"></span>
+          <div>
+            <div class="mini-ui__title">Your circle</div>
+            <div class="mini-ui__sub">3 friends · 2 online</div>
+          </div>
+          <span class="mini-ui__badge"><span class="dot dot--live"></span>Live</span>
+        </div>
+        <div class="mini-ui__row" style="--i:0">
+          <span class="p-avatar" data-avatar="fox" data-palette="0"></span>
+          <div class="mini-ui__who"><b>Mira</b><span>Online now</span></div>
+          <div class="mini-ui__stat"><b>4h 12m</b><span>Screen time</span></div>
+        </div>
+        <div class="mini-ui__row" style="--i:1">
+          <span class="p-avatar" data-avatar="robot" data-palette="2"></span>
+          <div class="mini-ui__who"><b>Dan</b><span>Online now</span></div>
+          <div class="mini-ui__stat"><b>2h 47m</b><span>Screen time</span></div>
+        </div>
+        <div class="mini-ui__row mini-ui__row--away" style="--i:2">
+          <span class="p-avatar" data-avatar="star" data-palette="9"></span>
+          <div class="mini-ui__who"><b>Aiko</b><span>Away · 2h</span></div>
+          <div class="mini-ui__stat"><b>1h 05m</b><span>Screen time</span></div>
+        </div>
+        <div class="mini-ui__row" style="--i:3">
+          <span class="p-avatar" data-avatar="ghost" data-palette="8"></span>
+          <div class="mini-ui__who"><b>Lena</b><span>Silent mode</span></div>
+          <div class="mini-ui__stat mini-ui__stat--paused"><b>Paused</b><span>Not shared</span></div>
+        </div>
+        <div class="mini-ui__foot">
+          <span class="p-avatar p-avatar--add"><svg class="icon"><use href="#i-plus"/></svg></span>
+          <span>Invite by @handle</span>
+        </div>
+      </div>
+      <div class="mini-float mini-float--a">🔥 6-day streak</div>
+      <div class="mini-float mini-float--b">💬 "touch grass lol" <svg class="icon"><use href="#i-heart"/></svg></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Features ============ -->
+<section class="section section--tint" id="features">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow reveal">Features</p>
+      <h2 class="h2 reveal">Small app.<br/>Everyday closeness.</h2>
+      <p class="lede lede--center reveal">Everything below runs on your phone and syncs only to the friends you chose.</p>
+    </div>
+
+    <div class="bento">
+      <!-- Screen time — large -->
+      <article class="bento__card bento__card--wide reveal" data-tilt>
+        <div class="bento__body">
+          <span class="bento__icon"><svg class="icon"><use href="#i-clock"/></svg></span>
+          <h3>Screen time</h3>
+          <p>See how much time your friends spend on their devices today — a real number from Android's usage stats, never a guess.</p>
+        </div>
+        <div class="bento__art" aria-hidden="true">
+          <div class="ring-big">
+            <svg viewBox="0 0 120 120">
+              <circle class="ring-big__bg" cx="60" cy="60" r="50"/>
+              <circle class="ring-big__fg" cx="60" cy="60" r="50" data-ring="0.62"/>
+            </svg>
+            <div class="ring-big__center"><b data-count="268" data-format="duration">4h 28m</b><span>today</span></div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Activity status -->
+      <article class="bento__card reveal" data-tilt>
+        <div class="bento__body">
+          <span class="bento__icon"><svg class="icon"><use href="#i-activity"/></svg></span>
+          <h3>Activity status</h3>
+          <p>Know when friends are around without messaging "you up?" every time.</p>
+        </div>
+        <div class="bento__art bento__art--presence" aria-hidden="true">
+          <div class="presence"><span class="p-avatar" data-avatar="fox" data-palette="0"></span><span class="dot dot--live"></span><div><b>Mira</b><span>Online now</span></div></div>
+          <div class="presence presence--dim"><span class="p-avatar" data-avatar="star" data-palette="9"></span><div><b>Aiko</b><span>Last seen 2h ago</span></div></div>
+          <div class="presence presence--dim"><span class="p-avatar" data-avatar="ghost" data-palette="8"></span><div><b>Lena</b><span>Offline · Silent</span></div></div>
+        </div>
+      </article>
+
+      <!-- App usage -->
+      <article class="bento__card reveal" data-tilt>
+        <div class="bento__body">
+          <span class="bento__icon"><svg class="icon"><use href="#i-chart"/></svg></span>
+          <h3>App usage</h3>
+          <p>Understand which apps are taking up the day — ranked, with honest bars.</p>
+        </div>
+        <div class="bento__art" aria-hidden="true">
+          <div class="bar-row"><span>Chrome</span><i style="--w:78%;--c:#5A8FEF"></i><em>1h 42m</em></div>
+          <div class="bar-row"><span>ChatZ</span><i style="--w:44%;--c:#F06C9D"></i><em>58m</em></div>
+          <div class="bar-row"><span>YouTube</span><i style="--w:36%;--c:#F2C23C"></i><em>47m</em></div>
+          <div class="bar-row"><span>Notes</span><i style="--w:14%;--c:#7CC24A"></i><em>19m</em></div>
+        </div>
+      </article>
+
+      <!-- Reactions & comments -->
+      <article class="bento__card bento__card--wide reveal" data-tilt>
+        <div class="bento__body">
+          <span class="bento__icon"><svg class="icon"><use href="#i-heart"/></svg></span>
+          <h3>Reactions &amp; comments</h3>
+          <p>React to a friend's day or leave a comment on their stat card. Everything expires after 24 hours — today is today.</p>
+        </div>
+        <div class="bento__art" aria-hidden="true">
+          <div class="react-demo">
+            <div class="react-demo__card">Mira's day · 4h 12m</div>
+            <div class="react-demo__chips">
+              <span class="react-chip">🔥 2</span>
+              <span class="react-chip react-chip--pop">😂 3</span>
+              <span class="react-chip">😮 1</span>
+            </div>
+            <div class="react-demo__comment"><span class="p-avatar p-avatar--xs" data-avatar="star" data-palette="9"></span>"touch grass lol" <em>· Aiko</em></div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Friends -->
+      <article class="bento__card reveal" data-tilt>
+        <div class="bento__body">
+          <span class="bento__icon"><svg class="icon"><use href="#i-users"/></svg></span>
+          <h3>Friends</h3>
+          <p>Build your own private circle. Found by @handle, confirmed by you.</p>
+        </div>
+        <div class="bento__art bento__art--cluster" aria-hidden="true">
+          <div class="cluster">
+            <span class="p-avatar" data-avatar="fox" data-palette="0"></span>
+            <span class="p-avatar" data-avatar="robot" data-palette="2"></span>
+            <span class="p-avatar" data-avatar="cat" data-palette="4"></span>
+            <span class="p-avatar" data-avatar="ghost" data-palette="8"></span>
+            <span class="p-avatar p-avatar--add"><svg class="icon"><use href="#i-plus"/></svg></span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Direct messages -->
+      <article class="bento__card reveal" data-tilt>
+        <div class="bento__body">
+          <span class="bento__icon"><svg class="icon"><use href="#i-message"/></svg></span>
+          <h3>Direct messages</h3>
+          <p>Turn activity into conversation. "4h already??" hits different as a chat.</p>
+        </div>
+        <div class="bento__art" aria-hidden="true">
+          <div class="dm-demo">
+            <div class="dm-bubble dm-bubble--in">4h already?? 😅</div>
+            <div class="dm-bubble dm-bubble--out">it was the new update ok</div>
+            <div class="dm-typing"><i></i><i></i><i></i></div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Privacy + mode banner -->
+      <article class="bento__card bento__card--banner reveal">
+        <div class="bento__body bento__body--row">
+          <div>
+            <span class="bento__icon"><svg class="icon"><use href="#i-shield"/></svg></span>
+            <h3>Your activity. Your control.</h3>
+            <p>Per-category sharing switches and a Silent mode that pauses everything — enforced server-side, not just hidden.</p>
+          </div>
+          <div class="bento__links">
+            <a class="btn btn--ghost btn--sm" href="#privacy">Try the privacy controls <svg class="icon"><use href="#i-arrow-right"/></svg></a>
+            <a class="btn btn--ghost btn--sm" href="privacy.html">Read the privacy approach</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Interactive demo ============ -->
+<section class="section" id="explore">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow reveal">Explore the app</p>
+      <h2 class="h2 reveal">Take ChatZ for a spin.</h2>
+      <p class="lede lede--center reveal">Real screens, demo data. Switch tabs like you would in the app.</p>
+    </div>
+
+    <div class="demo reveal">
+      <div class="demo__tabs" role="tablist" aria-label="ChatZ screens">
+        <button class="demo__tab is-active" role="tab" aria-selected="true" data-screen="pulse" id="tab-pulse" aria-controls="screen-pulse">
+          <svg class="icon"><use href="#i-activity"/></svg>
+          <span><b>Pulse</b><em>Your day at a glance</em></span>
+        </button>
+        <button class="demo__tab" role="tab" aria-selected="false" data-screen="friends" id="tab-friends" aria-controls="screen-friends">
+          <svg class="icon"><use href="#i-users"/></svg>
+          <span><b>Friends</b><em>Your circle &amp; requests</em></span>
+        </button>
+        <button class="demo__tab" role="tab" aria-selected="false" data-screen="messages" id="tab-messages" aria-controls="screen-messages">
+          <svg class="icon"><use href="#i-message"/></svg>
+          <span><b>Chats</b><em>Turn stats into talk</em></span>
+        </button>
+        <button class="demo__tab" role="tab" aria-selected="false" data-screen="usage" id="tab-usage" aria-controls="screen-usage">
+          <svg class="icon"><use href="#i-chart"/></svg>
+          <span><b>Usage</b><em>A friend's day in detail</em></span>
+        </button>
+        <button class="demo__tab" role="tab" aria-selected="false" data-screen="profile" id="tab-profile" aria-controls="screen-profile">
+          <svg class="icon"><use href="#i-smartphone"/></svg>
+          <span><b>Profile</b><em>Sharing, your rules</em></span>
+        </button>
+      </div>
+
+      <div class="demo__stage">
+        <div class="phone phone--demo">
+          <div class="phone__notch"></div>
+          <div class="phone__screen phone__screen--scroll" id="demoPhone">
+
+            <!-- PULSE -->
+            <div class="scr is-active" id="screen-pulse" role="tabpanel" aria-labelledby="tab-pulse">
+              <div class="p-status">
+                <span class="p-status__time">9:41</span>
+                <span class="p-status__icons">
+                  <svg viewBox="0 0 16 12" class="p-sig"><rect x="0" y="7" width="3" height="5" rx="1"/><rect x="4.5" y="5" width="3" height="7" rx="1"/><rect x="9" y="2.5" width="3" height="9.5" rx="1"/><rect x="13" y="0" width="3" height="12" rx="1" opacity=".35"/></svg>
+                  <svg class="p-batt" viewBox="0 0 25 12"><rect x="0.5" y="0.5" width="21" height="11" rx="3" fill="none" stroke="currentColor" opacity=".4"/><rect x="2.5" y="2.5" width="14" height="7" rx="1.5"/><rect x="23" y="4" width="2" height="4" rx="1" opacity=".4"/></svg>
+                </span>
+              </div>
+              <div class="p-head">
+                <div><div class="p-head__title">Pulse</div><div class="p-head__date">Today · Thursday</div></div>
+                <div class="p-head__side">
+                  <span class="p-streak"><svg class="icon"><use href="#i-flame"/></svg>6</span>
+                  <span class="p-avatar" data-avatar="cat" data-palette="4"></span>
+                </div>
+              </div>
+              <div class="p-mode">
+                <button class="p-mode__opt p-mode__opt--on is-on" type="button" data-demo-mode="active"><svg class="icon"><use href="#i-zap"/></svg>Active</button>
+                <button class="p-mode__opt" type="button" data-demo-mode="silent"><svg class="icon"><use href="#i-moon"/></svg>Silent</button>
+              </div>
+              <div class="p-today">
+                <div class="p-today__ringwrap">
+                  <svg class="p-today__ring" viewBox="0 0 72 72">
+                    <circle class="p-today__ring-bg" cx="36" cy="36" r="30"/>
+                    <circle class="p-today__ring-fg" cx="36" cy="36" r="30" data-ring="0.62"/>
+                  </svg>
+                  <div class="p-today__goal">62%</div>
+                </div>
+                <div class="p-today__nums">
+                  <div class="p-today__label">Screen time today</div>
+                  <div class="p-today__value">4h 28m</div>
+                  <div class="p-today__sub">Goal · 7h 00m</div>
+                </div>
+              </div>
+              <div class="p-card">
+                <div class="p-card__label">Top apps today</div>
+                <div class="p-app"><span class="p-app__dot" style="--c:#5A8FEF"></span><span class="p-app__name">Chrome</span><span class="p-app__bar"><i style="--w:72%"></i></span><span class="p-app__val">1h 42m</span></div>
+                <div class="p-app"><span class="p-app__dot" style="--c:#F06C9D"></span><span class="p-app__name">ChatZ</span><span class="p-app__bar"><i style="--w:41%"></i></span><span class="p-app__val">58m</span></div>
+                <div class="p-app"><span class="p-app__dot" style="--c:#F2C23C"></span><span class="p-app__name">YouTube</span><span class="p-app__bar"><i style="--w:33%"></i></span><span class="p-app__val">47m</span></div>
+              </div>
+              <div class="p-card p-friend" data-goto-friend="mira" role="button" tabindex="0" aria-label="View Mira's usage">
+                <div class="p-friend__row">
+                  <span class="p-avatar" data-avatar="fox" data-palette="0"></span>
+                  <div class="p-friend__meta"><div class="p-friend__name">Mira <span class="dot dot--live"></span></div><div class="p-friend__sub">Online · 4h 12m today</div></div>
+                  <span class="p-chip">Top · Chrome</span>
+                </div>
+              </div>
+              <div class="p-tabs">
+                <span class="p-tab p-tab--on"><svg class="icon"><use href="#i-activity"/></svg>Pulse</span>
+                <span class="p-tab"><svg class="icon"><use href="#i-users"/></svg>Friends</span>
+                <span class="p-tab"><svg class="icon"><use href="#i-message"/></svg>Chats</span>
+                <span class="p-tab"><svg class="icon"><use href="#i-smartphone"/></svg>Me</span>
+              </div>
+            </div>
+
+            <!-- FRIENDS -->
+            <div class="scr" id="screen-friends" role="tabpanel" aria-labelledby="tab-friends" hidden>
+              <div class="p-status">
+                <span class="p-status__time">9:41</span>
+                <span class="p-status__icons">
+                  <svg viewBox="0 0 16 12" class="p-sig"><rect x="0" y="7" width="3" height="5" rx="1"/><rect x="4.5" y="5" width="3" height="7" rx="1"/><rect x="9" y="2.5" width="3" height="9.5" rx="1"/><rect x="13" y="0" width="3" height="12" rx="1" opacity=".35"/></svg>
+                  <svg class="p-batt" viewBox="0 0 25 12"><rect x="0.5" y="0.5" width="21" height="11" rx="3" fill="none" stroke="currentColor" opacity=".4"/><rect x="2.5" y="2.5" width="14" height="7" rx="1.5"/><rect x="23" y="4" width="2" height="4" rx="1" opacity=".4"/></svg>
+                </span>
+              </div>
+              <div class="p-head"><div><div class="p-head__title">Friends</div><div class="p-head__date">4 friends · 1 request</div></div></div>
+              <label class="p-search">
+                <svg class="icon"><use href="#i-search"/></svg>
+                <input type="text" id="demoFriendSearch" placeholder="Search @handle or name" autocomplete="off" spellcheck="false" />
+              </label>
+              <div class="p-card p-request">
+                <div class="p-card__label">Friend request</div>
+                <div class="p-friend__row">
+                  <span class="p-avatar" data-avatar="ghost" data-palette="8"></span>
+                  <div class="p-friend__meta"><div class="p-friend__name">Lena</div><div class="p-friend__sub">@lenaa</div></div>
+                  <span class="p-btn p-btn--primary">Accept</span>
+                  <span class="p-btn">Decline</span>
+                </div>
+              </div>
+              <div id="demoFriendList">
+                <div class="p-card p-friend" data-goto-friend="mira" data-name="mira" role="button" tabindex="0" aria-label="View Mira's usage">
+                  <div class="p-friend__row">
+                    <span class="p-avatar" data-avatar="fox" data-palette="0"></span>
+                    <div class="p-friend__meta"><div class="p-friend__name">Mira <span class="dot dot--live"></span></div><div class="p-friend__sub">@mira · Online</div></div>
+                    <span class="p-chip">4h 12m</span>
+                  </div>
+                </div>
+                <div class="p-card p-friend" data-goto-friend="dan" data-name="dan" role="button" tabindex="0" aria-label="View Dan's usage">
+                  <div class="p-friend__row">
+                    <span class="p-avatar" data-avatar="robot" data-palette="2"></span>
+                    <div class="p-friend__meta"><div class="p-friend__name">Dan <span class="dot dot--live"></span></div><div class="p-friend__sub">@danbuilds · Online</div></div>
+                    <span class="p-chip">2h 47m</span>
+                  </div>
+                </div>
+                <div class="p-card p-friend" data-goto-friend="aiko" data-name="aiko" role="button" tabindex="0" aria-label="View Aiko's usage">
+                  <div class="p-friend__row">
+                    <span class="p-avatar" data-avatar="star" data-palette="9"></span>
+                    <div class="p-friend__meta"><div class="p-friend__name">Aiko</div><div class="p-friend__sub">@aiko · Away · 2h</div></div>
+                    <span class="p-chip">1h 05m</span>
+                  </div>
+                </div>
+                <div class="p-card p-friend p-friend--paused" data-name="sam">
+                  <div class="p-friend__row">
+                    <span class="p-avatar" data-avatar="sprout" data-palette="5"></span>
+                    <div class="p-friend__meta"><div class="p-friend__name">Sam</div><div class="p-friend__sub">@samseeds · Away · 4h</div></div>
+                    <span class="p-chip p-chip--muted"><svg class="icon"><use href="#i-moon"/></svg>Paused</span>
+                  </div>
+                </div>
+              </div>
+              <div class="p-tabs">
+                <span class="p-tab"><svg class="icon"><use href="#i-activity"/></svg>Pulse</span>
+                <span class="p-tab p-tab--on"><svg class="icon"><use href="#i-users"/></svg>Friends</span>
+                <span class="p-tab"><svg class="icon"><use href="#i-message"/></svg>Chats</span>
+                <span class="p-tab"><svg class="icon"><use href="#i-smartphone"/></svg>Me</span>
+              </div>
+            </div>
+
+            <!-- MESSAGES -->
+            <div class="scr" id="screen-messages" role="tabpanel" aria-labelledby="tab-messages" hidden>
+              <div class="p-status">
+                <span class="p-status__time">9:41</span>
+                <span class="p-status__icons">
+                  <svg viewBox="0 0 16 12" class="p-sig"><rect x="0" y="7" width="3" height="5" rx="1"/><rect x="4.5" y="5" width="3" height="7" rx="1"/><rect x="9" y="2.5" width="3" height="9.5" rx="1"/><rect x="13" y="0" width="3" height="12" rx="1" opacity=".35"/></svg>
+                  <svg class="p-batt" viewBox="0 0 25 12"><rect x="0.5" y="0.5" width="21" height="11" rx="3" fill="none" stroke="currentColor" opacity=".4"/><rect x="2.5" y="2.5" width="14" height="7" rx="1.5"/><rect x="23" y="4" width="2" height="4" rx="1" opacity=".4"/></svg>
+                </span>
+              </div>
+              <div class="p-head">
+                <div><div class="p-head__title">Mira</div><div class="p-head__date"><span class="dot dot--live"></span> Online now</div></div>
+                <div class="p-head__side"><span class="p-avatar" data-avatar="fox" data-palette="0"></span></div>
+              </div>
+              <div class="p-thread" id="demoThread">
+                <div class="p-day">Today</div>
+                <div class="p-msg p-msg--in">just saw your screen time 😭</div>
+                <div class="p-msg p-msg--in">4h before lunch??</div>
+                <div class="p-msg p-msg--out">it was the new update ok</div>
+                <div class="p-msg p-msg--out">…and a friend's stats page</div>
+                <div class="p-msg p-msg--in">sure sure 😌</div>
+              </div>
+              <form class="p-composer" id="demoComposer">
+                <input type="text" id="demoInput" placeholder="Message Mira…" autocomplete="off" aria-label="Message Mira" />
+                <button class="p-send" type="submit" aria-label="Send"><svg class="icon"><use href="#i-send"/></svg></button>
+              </form>
+              <div class="p-tabs">
+                <span class="p-tab"><svg class="icon"><use href="#i-activity"/></svg>Pulse</span>
+                <span class="p-tab"><svg class="icon"><use href="#i-users"/></svg>Friends</span>
+                <span class="p-tab p-tab--on"><svg class="icon"><use href="#i-message"/></svg>Chats</span>
+                <span class="p-tab"><svg class="icon"><use href="#i-smartphone"/></svg>Me</span>
+              </div>
+            </div>
+
+            <!-- USAGE -->
+            <div class="scr" id="screen-usage" role="tabpanel" aria-labelledby="tab-usage" hidden>
+              <div class="p-status">
+                <span class="p-status__time">9:41</span>
+                <span class="p-status__icons">
+                  <svg viewBox="0 0 16 12" class="p-sig"><rect x="0" y="7" width="3" height="5" rx="1"/><rect x="4.5" y="5" width="3" height="7" rx="1"/><rect x="9" y="2.5" width="3" height="9.5" rx="1"/><rect x="13" y="0" width="3" height="12" rx="1" opacity=".35"/></svg>
+                  <svg class="p-batt" viewBox="0 0 25 12"><rect x="0.5" y="0.5" width="21" height="11" rx="3" fill="none" stroke="currentColor" opacity=".4"/><rect x="2.5" y="2.5" width="14" height="7" rx="1.5"/><rect x="23" y="4" width="2" height="4" rx="1" opacity=".4"/></svg>
+                </span>
+              </div>
+              <div class="p-head">
+                <div><div class="p-head__title" id="usageName">Mira</div><div class="p-head__date" id="usageHandle">@mira · Today</div></div>
+                <div class="p-head__side"><span class="p-avatar" id="usageAvatar" data-avatar="fox" data-palette="0"></span></div>
+              </div>
+              <div class="p-usage-hero">
+                <div class="p-usage-hero__num" id="usageTotal">4h 12m</div>
+                <div class="p-usage-hero__label">Screen time today</div>
+                <div class="p-usage-hero__sub" id="usageBattery"><svg class="icon"><use href="#i-battery"/></svg> 78% · charging</div>
+              </div>
+              <div class="p-card">
+                <div class="p-card__label">Categories</div>
+                <div class="p-cat"><span>Social</span><i style="--w:52%;--c:#F06C9D"></i><em>2h 10m</em></div>
+                <div class="p-cat"><span>Entertainment</span><i style="--w:28%;--c:#5A8FEF"></i><em>1h 12m</em></div>
+                <div class="p-cat"><span>Productivity</span><i style="--w:19%;--c:#7CC24A"></i><em>48m</em></div>
+                <div class="p-cat"><span>Other</span><i style="--w:7%;--c:#8B8B92"></i><em>18m</em></div>
+              </div>
+              <div class="p-card">
+                <div class="p-card__label">Top apps</div>
+                <div class="p-app"><span class="p-app__dot" style="--c:#F06C9D"></span><span class="p-app__name">ChatZ</span><span class="p-app__bar"><i style="--w:64%"></i></span><span class="p-app__val">1h 06m</span></div>
+                <div class="p-app"><span class="p-app__dot" style="--c:#5A8FEF"></span><span class="p-app__name">Chrome</span><span class="p-app__bar"><i style="--w:48%"></i></span><span class="p-app__val">52m</span></div>
+                <div class="p-app"><span class="p-app__dot" style="--c:#F2C23C"></span><span class="p-app__name">Spotify</span><span class="p-app__bar"><i style="--w:30%"></i></span><span class="p-app__val">33m</span></div>
+              </div>
+              <div class="p-card p-data">
+                <div class="p-data__row"><svg class="icon"><use href="#i-wifi"/></svg><span>Wi-Fi today</span><b>1.8 GB</b></div>
+                <div class="p-data__row"><svg class="icon"><use href="#i-activity"/></svg><span>Mobile data</span><b>420 MB</b></div>
+              </div>
+              <div class="p-tabs">
+                <span class="p-tab"><svg class="icon"><use href="#i-activity"/></svg>Pulse</span>
+                <span class="p-tab p-tab--on"><svg class="icon"><use href="#i-users"/></svg>Friends</span>
+                <span class="p-tab"><svg class="icon"><use href="#i-message"/></svg>Chats</span>
+                <span class="p-tab"><svg class="icon"><use href="#i-smartphone"/></svg>Me</span>
+              </div>
+            </div>
+
+            <!-- PROFILE -->
+            <div class="scr" id="screen-profile" role="tabpanel" aria-labelledby="tab-profile" hidden>
+              <div class="p-status">
+                <span class="p-status__time">9:41</span>
+                <span class="p-status__icons">
+                  <svg viewBox="0 0 16 12" class="p-sig"><rect x="0" y="7" width="3" height="5" rx="1"/><rect x="4.5" y="5" width="3" height="7" rx="1"/><rect x="9" y="2.5" width="3" height="9.5" rx="1"/><rect x="13" y="0" width="3" height="12" rx="1" opacity=".35"/></svg>
+                  <svg class="p-batt" viewBox="0 0 25 12"><rect x="0.5" y="0.5" width="21" height="11" rx="3" fill="none" stroke="currentColor" opacity=".4"/><rect x="2.5" y="2.5" width="14" height="7" rx="1.5"/><rect x="23" y="4" width="2" height="4" rx="1" opacity=".4"/></svg>
+                </span>
+              </div>
+              <div class="p-head"><div><div class="p-head__title">Me</div><div class="p-head__date">Profile &amp; privacy</div></div></div>
+              <div class="p-me">
+                <span class="p-avatar p-avatar--lg" data-avatar="cat" data-palette="4"></span>
+                <div class="p-me__meta">
+                  <div class="p-me__name">Zee</div>
+                  <div class="p-me__handle">@zee · <span class="p-streak"><svg class="icon"><use href="#i-flame"/></svg>6</span></div>
+                </div>
+              </div>
+              <div class="p-card">
+                <div class="p-card__label">Mode</div>
+                <div class="p-mode p-mode--slim">
+                  <button class="p-mode__opt p-mode__opt--on is-on" type="button" data-demo-mode="active"><svg class="icon"><use href="#i-zap"/></svg>Active</button>
+                  <button class="p-mode__opt" type="button" data-demo-mode="silent"><svg class="icon"><use href="#i-moon"/></svg>Silent</button>
+                </div>
+                <p class="p-note" id="demoModeNote">Active — sharing today's stats with your circle.</p>
+              </div>
+              <div class="p-card">
+                <div class="p-card__label">What friends can see</div>
+                <label class="p-toggle"><span><svg class="icon"><use href="#i-clock"/></svg>Screen time</span><input type="checkbox" checked data-share="screen"/><i></i></label>
+                <label class="p-toggle"><span><svg class="icon"><use href="#i-chart"/></svg>App usage</span><input type="checkbox" checked data-share="apps"/><i></i></label>
+                <label class="p-toggle"><span><svg class="icon"><use href="#i-wifi"/></svg>Data usage</span><input type="checkbox" data-share="data"/><i></i></label>
+                <label class="p-toggle"><span><svg class="icon"><use href="#i-activity"/></svg>Active status</span><input type="checkbox" checked data-share="status"/><i></i></label>
+              </div>
+              <p class="p-note p-note--foot">Changes apply immediately — friends never see a stale value.</p>
+              <div class="p-tabs">
+                <span class="p-tab"><svg class="icon"><use href="#i-activity"/></svg>Pulse</span>
+                <span class="p-tab"><svg class="icon"><use href="#i-users"/></svg>Friends</span>
+                <span class="p-tab"><svg class="icon"><use href="#i-message"/></svg>Chats</span>
+                <span class="p-tab p-tab--on"><svg class="icon"><use href="#i-smartphone"/></svg>Me</span>
+              </div>
+            </div>
+
+          </div>
+          <div class="phone__shadow" aria-hidden="true"></div>
+        </div>
+        <p class="demo__hint">Tip: everything with a control actually works — search, the mode toggle, sending a message.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Friends ============ -->
+<section class="section section--tint" id="friends">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow reveal">Friends</p>
+      <h2 class="h2 reveal">A circle,<br/>not an audience.</h2>
+      <p class="lede lede--center reveal">You find people by @handle. They accept. That's the whole network.</p>
+    </div>
+
+    <div class="friends-grid">
+      <article class="fcard reveal" style="--d:0">
+        <div class="fcard__top">
+          <span class="p-avatar p-avatar--lg" data-avatar="fox" data-palette="0"></span>
+          <span class="dot dot--live dot--lg"></span>
+        </div>
+        <h3 class="fcard__name">Mira</h3>
+        <p class="fcard__handle">@mira</p>
+        <div class="fcard__stats">
+          <div class="fcard__stat"><b data-count="252" data-format="duration">4h 12m</b><span>screen time</span></div>
+          <div class="fcard__stat"><b>🔥 12</b><span>day streak</span></div>
+        </div>
+        <div class="fcard__chip"><svg class="icon"><use href="#i-chart"/></svg>Top · Chrome</div>
+      </article>
+
+      <article class="fcard reveal" style="--d:1">
+        <div class="fcard__top">
+          <span class="p-avatar p-avatar--lg" data-avatar="robot" data-palette="2"></span>
+          <span class="dot dot--live dot--lg"></span>
+        </div>
+        <h3 class="fcard__name">Dan</h3>
+        <p class="fcard__handle">@danbuilds</p>
+        <div class="fcard__stats">
+          <div class="fcard__stat"><b data-count="167" data-format="duration">2h 47m</b><span>screen time</span></div>
+          <div class="fcard__stat"><b>🔥 4</b><span>day streak</span></div>
+        </div>
+        <div class="fcard__chip"><svg class="icon"><use href="#i-chart"/></svg>Top · Acode</div>
+      </article>
+
+      <article class="fcard reveal" style="--d:2">
+        <div class="fcard__top">
+          <span class="p-avatar p-avatar--lg" data-avatar="star" data-palette="9"></span>
+          <span class="dot dot--away dot--lg"></span>
+        </div>
+        <h3 class="fcard__name">Aiko</h3>
+        <p class="fcard__handle">@aiko</p>
+        <div class="fcard__stats">
+          <div class="fcard__stat"><b data-count="65" data-format="duration">1h 05m</b><span>screen time</span></div>
+          <div class="fcard__stat"><b>🔥 28</b><span>day streak</span></div>
+        </div>
+        <div class="fcard__chip"><svg class="icon"><use href="#i-chart"/></svg>Top · Podcasts</div>
+      </article>
+
+      <article class="fcard fcard--paused reveal" style="--d:3">
+        <div class="fcard__top">
+          <span class="p-avatar p-avatar--lg" data-avatar="sprout" data-palette="5"></span>
+          <span class="dot dot--off dot--lg"></span>
+        </div>
+        <h3 class="fcard__name">Sam</h3>
+        <p class="fcard__handle">@samseeds</p>
+        <div class="fcard__paused">
+          <svg class="icon"><use href="#i-moon"/></svg>
+          <b>Stats sharing is paused</b>
+          <span>Sam is in Silent mode — hidden until they switch back to Active.</span>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Privacy ============ -->
+<section class="section" id="privacy">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow reveal">Privacy</p>
+      <h2 class="h2 reveal">Your activity.<br/>Your control.</h2>
+      <p class="lede lede--center reveal">Flip the switches and watch a friend's view change. This is how it actually works in the app.</p>
+    </div>
+
+    <div class="privacy reveal">
+      <div class="privacy__panel">
+        <div class="privacy__head">
+          <span class="p-avatar" data-avatar="cat" data-palette="4"></span>
+          <div><b>Zee — sharing switches</b><span>Everything here is yours to change, any time</span></div>
+        </div>
+        <div class="privacy__toggles">
+          <label class="p-toggle p-toggle--lg"><span><svg class="icon"><use href="#i-clock"/></svg>Screen time</span><input type="checkbox" checked data-share="screen"/><i></i></label>
+          <label class="p-toggle p-toggle--lg"><span><svg class="icon"><use href="#i-chart"/></svg>App usage</span><input type="checkbox" checked data-share="apps"/><i></i></label>
+          <label class="p-toggle p-toggle--lg"><span><svg class="icon"><use href="#i-wifi"/></svg>Data usage</span><input type="checkbox" data-share="data"/><i></i></label>
+          <label class="p-toggle p-toggle--lg"><span><svg class="icon"><use href="#i-activity"/></svg>Active status</span><input type="checkbox" checked data-share="status"/><i></i></label>
+          <div class="privacy__mode">
+            <span>Mode</span>
+            <div class="p-mode p-mode--slim p-mode--panel">
+              <button class="p-mode__opt p-mode__opt--on is-on" type="button" data-demo-mode="active"><svg class="icon"><use href="#i-zap"/></svg>Active</button>
+              <button class="p-mode__opt" type="button" data-demo-mode="silent"><svg class="icon"><use href="#i-moon"/></svg>Silent</button>
+            </div>
+          </div>
+        </div>
+        <p class="privacy__note">Off means off: the stored snapshot is rewritten immediately, friends never see the category again — not even an old value. No fake zeros.</p>
+      </div>
+
+      <div class="privacy__arrow" aria-hidden="true">
+        <svg class="icon"><use href="#i-arrow-right"/></svg>
+        <span>what your friend Mira sees</span>
+      </div>
+
+      <div class="privacy__panel privacy__panel--friend">
+        <div class="privacy__head">
+          <span class="p-avatar" data-avatar="fox" data-palette="0"></span>
+          <div><b>Mira's view of Zee</b><span id="privacySummary">2 of 4 categories shared</span></div>
+        </div>
+        <div class="privacy__view" id="privacyView">
+          <div class="pv-row" data-pv="screen">
+            <div class="pv-row__main"><svg class="icon"><use href="#i-clock"/></svg><div><b>4h 28m</b><span>Screen time today</span></div></div>
+            <div class="pv-row__off"><svg class="icon"><use href="#i-eye-off"/></svg>Not shared</div>
+          </div>
+          <div class="pv-row" data-pv="apps">
+            <div class="pv-row__main">
+              <svg class="icon"><use href="#i-chart"/></svg>
+              <div class="pv-row__apps"><b>Top apps</b>
+                <span class="pv-bar"><i style="--w:72%;--c:#5A8FEF"></i></span>
+                <span class="pv-bar"><i style="--w:44%;--c:#F06C9D"></i></span>
+              </div>
+            </div>
+            <div class="pv-row__off"><svg class="icon"><use href="#i-eye-off"/></svg>Not shared</div>
+          </div>
+          <div class="pv-row pv-row--hidden-by-default" data-pv="data">
+            <div class="pv-row__main"><svg class="icon"><use href="#i-wifi"/></svg><div><b>1.8 GB</b><span>Wi-Fi · 420 MB mobile</span></div></div>
+            <div class="pv-row__off"><svg class="icon"><use href="#i-eye-off"/></svg>Not shared</div>
+          </div>
+          <div class="pv-row" data-pv="status">
+            <div class="pv-row__main"><svg class="icon"><use href="#i-activity"/></svg><div><b><span class="dot dot--live"></span> Active now</b><span>Last seen just now</span></div></div>
+            <div class="pv-row__off"><svg class="icon"><use href="#i-eye-off"/></svg>Not shared</div>
+          </div>
+        </div>
+        <div class="privacy__paused" id="privacyPaused" hidden>
+          <svg class="icon"><use href="#i-moon"/></svg>
+          <b>Stats sharing is paused</b>
+          <span>Zee is in Silent mode — numbers are hidden and presence shows as away.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="trust">
+      <div class="trust__item reveal"><svg class="icon"><use href="#i-shield-check"/></svg><b>Enforced server-side</b><span>Friends can't read what you turned off — the security rules refuse it, not just the UI.</span></div>
+      <div class="trust__item reveal"><svg class="icon"><use href="#i-lock"/></svg><b>No location. Ever.</b><span>ChatZ never asks for location — so it can't read your Wi-Fi network name either.</span></div>
+      <div class="trust__item reveal"><svg class="icon"><use href="#i-eye-off"/></svg><b>No fake zeros</b><span>If something isn't shared, it isn't there. ChatZ never shows a fabricated 0.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ How it works ============ -->
+<section class="section section--tint" id="how">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow reveal">How it works</p>
+      <h2 class="h2 reveal">Three steps.<br/>About a minute.</h2>
+    </div>
+
+    <div class="steps">
+      <div class="steps__track" aria-hidden="true"><i></i></div>
+      <article class="step reveal">
+        <div class="step__art" aria-hidden="true">
+          <div class="step__phone"><svg class="icon"><use href="#i-download"/></svg></div>
+        </div>
+        <span class="step__num">Step 1</span>
+        <h3>Install ChatZ</h3>
+        <p>Download the APK below and sign in with Google. Setup asks for three permissions — screen time, notifications, background sync — and explains each one.</p>
+      </article>
+      <article class="step reveal">
+        <div class="step__art" aria-hidden="true">
+          <div class="step__search"><svg class="icon"><use href="#i-search"/></svg><span>@mira</span></div>
+          <div class="step__accept"><span class="p-avatar p-avatar--xs" data-avatar="fox" data-palette="0"></span>Mira accepted <svg class="icon"><use href="#i-check"/></svg></div>
+        </div>
+        <span class="step__num">Step 2</span>
+        <h3>Add your people</h3>
+        <p>Search friends by @handle or name and send a request. When they accept, you're a circle — capped by real friendships, not followers.</p>
+      </article>
+      <article class="step reveal">
+        <div class="step__art" aria-hidden="true">
+          <div class="step__sync"><svg class="icon"><use href="#i-refresh"/></svg><span>Synced · 9:30</span></div>
+          <div class="step__card"><b>4h 28m</b><span>shared with 3 friends</span></div>
+        </div>
+        <span class="step__num">Step 3</span>
+        <h3>Share your day</h3>
+        <p>ChatZ syncs a snapshot about every 15 minutes — even in the background. Friends react, comment, message. You stay in control the whole time.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Showcase ============ -->
+<section class="section" id="showcase">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow reveal">The details</p>
+      <h2 class="h2 reveal">Little moments,<br/>done properly.</h2>
+    </div>
+
+    <div class="showcase">
+      <!-- notifications -->
+      <article class="sc-card sc-card--notif reveal">
+        <div class="sc-card__label">Notifications</div>
+        <div class="sc-notif">
+          <span class="p-avatar p-avatar--xs" data-avatar="fox" data-palette="0"></span>
+          <div><b>Mira reacted to your day</b><span>😂 on your stat card</span></div>
+          <em>now</em>
+        </div>
+        <div class="sc-notif">
+          <span class="p-avatar p-avatar--xs" data-avatar="ghost" data-palette="8"></span>
+          <div><b>Lena sent a friend request</b><span>Accept from the Friends tab</span></div>
+          <em>2m</em>
+        </div>
+        <div class="sc-notif sc-notif--dim">
+          <span class="p-avatar p-avatar--xs" data-avatar="star" data-palette="9"></span>
+          <div><b>Aiko commented</b><span>"touch grass lol"</span></div>
+          <em>1h</em>
+        </div>
+      </article>
+
+      <!-- reaction card -->
+      <article class="sc-card sc-card--stat reveal">
+        <div class="sc-card__label">Stat cards</div>
+        <div class="sc-stat">
+          <div class="sc-stat__head"><span class="p-avatar p-avatar--xs" data-avatar="robot" data-palette="2"></span><b>Dan's day</b><em>Today</em></div>
+          <div class="sc-stat__num">2h 47m</div>
+          <div class="sc-stat__bars">
+            <span class="pv-bar"><i style="--w:66%;--c:#5A8FEF"></i></span>
+            <span class="pv-bar"><i style="--w:38%;--c:#7CC24A"></i></span>
+            <span class="pv-bar"><i style="--w:22%;--c:#F2C23C"></i></span>
+          </div>
+          <div class="react-demo__chips">
+            <span class="react-chip">🔥 2</span><span class="react-chip react-chip--pop">😂 3</span><span class="react-chip">😮 1</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- messages -->
+      <article class="sc-card sc-card--dm reveal">
+        <div class="sc-card__label">Chats</div>
+        <div class="dm-demo">
+          <div class="dm-bubble dm-bubble--in">just saw your screen time 😭</div>
+          <div class="dm-bubble dm-bubble--out">it was the new update ok</div>
+          <div class="dm-bubble dm-bubble--in">touch grass later? 🌱</div>
+          <div class="dm-typing"><i></i><i></i><i></i></div>
+        </div>
+      </article>
+
+      <!-- privacy -->
+      <article class="sc-card sc-card--privacy reveal">
+        <div class="sc-card__label">Privacy</div>
+        <div class="sc-privacy">
+          <label class="p-toggle p-toggle--lg"><span><svg class="icon"><use href="#i-clock"/></svg>Screen time</span><input type="checkbox" checked data-share="screen"/><i></i></label>
+          <label class="p-toggle p-toggle--lg"><span><svg class="icon"><use href="#i-wifi"/></svg>Data usage</span><input type="checkbox" data-share="data"/><i></i></label>
+        </div>
+        <p class="sc-privacy__note">A category you switch off isn't dimmed for friends — it's simply gone.</p>
+      </article>
+
+      <!-- modes -->
+      <article class="sc-card sc-card--modes reveal">
+        <div class="sc-card__label">Modes</div>
+        <div class="sc-modes">
+          <div class="sc-mode">
+            <svg class="icon sc-mode__zap"><use href="#i-zap"/></svg>
+            <div><b>Active</b><span>Share normally, per your switches.</span></div>
+          </div>
+          <div class="sc-mode">
+            <svg class="icon sc-mode__moon"><use href="#i-moon"/></svg>
+            <div><b>Silent</b><span>Take a break — friends see "paused".</span></div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ About ============ -->
+<section class="section section--tint about" id="about">
+  <div class="container about__inner">
+    <p class="eyebrow reveal">Philosophy</p>
+    <h2 class="h2 h2--center reveal">Friends,<br/>not followers.</h2>
+    <p class="lede lede--center reveal">
+      ChatZ is built around a small private circle. No endless feed,
+      no popularity competition, no meaningless metrics — just the
+      people you actually know, sharing days that actually happened.
+    </p>
+    <div class="about__row reveal">
+      <span>No infinite scroll</span><i></i>
+      <span>No follower counts</span><i></i>
+      <span>No advertising</span><i></i>
+      <span>No analytics SDKs</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Download ============ -->
+<section class="section" id="download">
+  <div class="container">
+    <div class="dl reveal">
+      <div class="dl__glow" aria-hidden="true"></div>
+      <h2 class="h2">Meet your circle<br/>on ChatZ.</h2>
+      <p class="lede">Free for Android 6.0+. Download the APK, install, sign in with Google — that's it.</p>
+      <div class="dl__ctas">
+        <a class="btn btn--pink btn--xl magnetic" id="dlButton" data-release="download" href="https://github.com/editsu4k-coder/chatz/releases/download/v1.7/chatz-v1.7.apk">
+          <svg class="icon"><use href="#i-download"/></svg>
+          Download for Android
+        </a>
+        <button class="btn btn--ghost btn--lg" type="button" id="dlDetailsBtn" aria-expanded="false" aria-controls="releaseCard">
+          View release details
+          <svg class="icon"><use href="#i-chevron"/></svg>
+        </button>
+      </div>
+      <p class="dl__meta">
+        <span data-release="version">1.7</span> · <span data-release="size">8.8 MB</span> · released <span data-release="date">Oct 2, 2026</span>
+        · SHA-256 verified
+      </p>
+
+      <div class="release" id="releaseCard" hidden>
+        <div class="release__head">
+          <div>
+            <div class="release__title">ChatZ <span data-release="version">1.7</span></div>
+            <div class="release__date">Released <span data-release="date">Oct 2, 2026</span> · via GitHub Releases</div>
+          </div>
+          <span class="release__badge"><svg class="icon"><use href="#i-shield-check"/></svg>Latest</span>
+        </div>
+        <ul class="release__notes" id="releaseNotes">
+          <li>Restricted-settings guidance</li>
+          <li>Floating update card</li>
+          <li>Honest not-syncing stats state</li>
+          <li>Toggle flicker fix</li>
+        </ul>
+        <div class="release__sha">
+          <span>SHA-256</span>
+          <code id="releaseSha">2d3077af…d6e72a</code>
+          <button class="release__copy" type="button" id="shaCopy" aria-label="Copy full SHA-256 checksum">
+            <svg class="icon"><use href="#i-copy"/></svg>
+          </button>
+        </div>
+        <div class="release__foot">
+          <a data-release="releasePage" href="https://github.com/editsu4k-coder/chatz/releases" target="_blank" rel="noopener noreferrer">
+            <svg class="icon"><use href="#i-github"/></svg>All releases</a>
+          <span>ChatZ also checks for updates inside the app — you'll be notified when a new version lands.</span>
+        </div>
+      </div>
+
+      <p class="dl__install">New to APKs? <a href="faq.html#install-apk">How to install</a> · Greyed-out toggle? <a href="support.html#restricted-settings">Allow restricted settings</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ (index teaser) ============ -->
+<section class="section section--tint" id="faq">
+  <div class="container faq-teaser">
+    <div class="faq-teaser__head">
+      <div class="faq-teaser__titles">
+        <p class="eyebrow reveal">FAQ</p>
+        <h2 class="h2 reveal">Quick answers.</h2>
+      </div>
+      <a class="textlink reveal" href="faq.html">All questions
+        <svg class="icon"><use href="#i-arrow-right"/></svg></a>
+    </div>
+    <div class="accordion reveal">
+      <details class="acc">
+        <summary>What is ChatZ?<span class="acc__icon"><svg class="icon"><use href="#i-plus"/></svg></span></summary>
+        <div class="acc__body"><p>A friend-only Android app that shares a summary of your digital day — screen time, top apps, data usage and activity status — with a circle of friends you personally accepted. There is no feed, no followers, no advertising, and no third-party analytics SDKs.</p></div>
+      </details>
+      <details class="acc">
+        <summary>What do my friends see about me?<span class="acc__icon"><svg class="icon"><use href="#i-plus"/></svg></span></summary>
+        <div class="acc__body"><p>Only what you allow in Profile → Privacy, and only today's summary — never your bio, date of birth or education. A category you switch off isn't shown at all (no “0”, no old value — it's simply absent). In Silent mode, friends see “Stats sharing is paused” instead of any numbers.</p></div>
+      </details>
+      <details class="acc">
+        <summary>Is ChatZ free?<span class="acc__icon"><svg class="icon"><use href="#i-plus"/></svg></span></summary>
+        <div class="acc__body"><p>Yes — ChatZ is free to download and use. There are no ads and no in-app purchases.</p></div>
+      </details>
+      <details class="acc">
+        <summary>Why does ChatZ request screen-time (Usage) access?<span class="acc__icon"><svg class="icon"><use href="#i-plus"/></svg></span></summary>
+        <div class="acc__body"><p>Real screen-time numbers can only be read with Android's Usage access permission. ChatZ uses it solely to build your daily summary on your device — raw app lists, screenshots, browser history, message contents and credentials are never uploaded.</p></div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Support band ============ -->
+<section class="section support-band" id="support">
+  <div class="container support-band__inner">
+    <div>
+      <h2 class="h3">Questions? We're around.</h2>
+      <p>ChatZ Support replies within 24 hours on weekdays.</p>
+    </div>
+    <div class="support-band__actions">
+      <a class="btn btn--white magnetic" href="mailto:chatz.org@gmail.com"><svg class="icon"><use href="#i-mail"/></svg>Email support</a>
+      <a class="btn btn--ghost magnetic" href="https://t.me/Mirmajid01" target="_blank" rel="noopener noreferrer"><svg class="icon"><use href="#i-send"/></svg>Telegram</a>
+      <a class="textlink" href="support.html">Help centre<svg class="icon"><use href="#i-arrow-right"/></svg></a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ Footer ============ -->
+<footer class="footer">
+  <div class="container footer__inner">
+    <div class="footer__brand">
+      <a class="brand" href="index.html" aria-label="ChatZ — home">
+        <span class="brand__mark" aria-hidden="true">
+          <svg viewBox="0 0 120 120" width="26" height="26"><path d="M62 22c20.4 0 36 14.3 36 32 0 17.7-15.6 32-36 32-3.6 0-7.1-.5-10.3-1.3l-13.4 8.2c-1.6 1-3.7-.3-3.4-2.2l1.9-11.9C29.5 73.4 26 65.6 26 54c0-17.7 15.6-32 36-32z" fill="none" stroke="currentColor" stroke-width="6.5" stroke-linejoin="round"/><path d="M48 42h32l-22 28h22" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+        <span class="brand__word">Chat<b>Z</b></span>
+      </a>
+      <p>Your digital life, shared with your people. Made for Android.</p>
+    </div>
+    <nav class="footer__cols" aria-label="Footer">
+      <div>
+        <h4>Product</h4>
+        <a href="#features">Features</a>
+        <a href="#explore">Explore the app</a>
+        <a href="#how">How it works</a>
+        <a href="#download">Download</a>
+      </div>
+      <div>
+        <h4>Resources</h4>
+        <a href="faq.html">FAQ</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="support.html">Support</a>
+        <a href="https://github.com/editsu4k-coder/chatz/releases" target="_blank" rel="noopener noreferrer">Release notes</a>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <a href="mailto:chatz.org@gmail.com">chatz.org@gmail.com</a>
+        <a href="https://t.me/Mirmajid01" target="_blank" rel="noopener noreferrer">Telegram · @Mirmajid01</a>
+      </div>
+    </nav>
+  </div>
+  <div class="container footer__base">
+    <span>© 2026 ChatZ. All rights reserved.</span>
+    <span>v<span data-release="version">1.7</span> · <a href="privacy.html">Privacy</a> · <a href="faq.html">FAQ</a></span>
+  </div>
+</footer>
+
+<div class="cursor" id="cursor" aria-hidden="true"></div>
+
+<script src="js/site-config.js"></script>
+<script src="js/main.js"></script>
+<script src="js/release.js"></script>
+</body>
+</html>
