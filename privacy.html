@@ -13,7 +13,16 @@
   <meta property="og:site_name" content="ChatZ" />
   <meta property="og:title" content="Privacy — ChatZ" />
   <meta property="og:description" content="What ChatZ collects, what friends can see, and the controls you have — described plainly." />
-  <meta property="og:image" content="assets/og.png" />
+  <link rel="canonical" href="https://chatz-website.vercel.app/privacy/" />
+  <meta property="og:url" content="https://chatz-website.vercel.app/privacy/" />
+  <meta property="og:image" content="https://chatz-website.vercel.app/assets/og.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="ChatZ — a dark app screen showing today's screen time shared with a small circle of friends" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Privacy — ChatZ" />
+  <meta name="twitter:description" content="What ChatZ collects, what friends can see, and the controls you have — described plainly." />
+  <meta name="twitter:image" content="https://chatz-website.vercel.app/assets/og.png" />
 </head>
 <body>
 
@@ -31,7 +40,7 @@
 
 <header class="nav" id="siteNav">
   <div class="container nav__inner">
-    <a class="brand" href="index.html" aria-label="ChatZ — home">
+    <a class="brand" href="/" aria-label="ChatZ — home">
       <span class="brand__mark" aria-hidden="true">
         <svg viewBox="0 0 120 120" width="26" height="26"><path d="M62 22c20.4 0 36 14.3 36 32 0 17.7-15.6 32-36 32-3.6 0-7.1-.5-10.3-1.3l-13.4 8.2c-1.6 1-3.7-.3-3.4-2.2l1.9-11.9C29.5 73.4 26 65.6 26 54c0-17.7 15.6-32 36-32z" fill="none" stroke="currentColor" stroke-width="6.5" stroke-linejoin="round"/><path d="M48 42h32l-22 28h22" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </span>
@@ -41,9 +50,9 @@
       <a href="index.html#product">Product</a>
       <a href="index.html#features">Features</a>
       <a href="index.html#how">How it works</a>
-      <a href="privacy.html" aria-current="page">Privacy</a>
-      <a href="faq.html">FAQ</a>
-      <a href="support.html">Support</a>
+      <a href="privacy" aria-current="page">Privacy</a>
+      <a href="faq">FAQ</a>
+      <a href="support">Support</a>
     </nav>
     <div class="nav__actions">
       <a class="btn btn--white btn--sm" href="index.html#download">Download</a>
@@ -57,13 +66,13 @@
       <a href="index.html#product">Product</a>
       <a href="index.html#features">Features</a>
       <a href="index.html#how">How it works</a>
-      <a href="privacy.html">Privacy</a>
-      <a href="faq.html">FAQ</a>
-      <a href="support.html">Support</a>
+      <a href="privacy">Privacy</a>
+      <a href="faq">FAQ</a>
+      <a href="support">Support</a>
     </nav>
     <div class="mobile-menu__foot">
       <a class="btn btn--pink" href="index.html#download">Download ChatZ</a>
-      <span class="mobile-menu__meta">Free · Android 6.0+ · <span data-release="version">1.7</span></span>
+      <span class="mobile-menu__meta">Free · Android 6.0+ · <span data-release="version">1.9</span></span>
     </div>
   </div>
 </header>
@@ -140,8 +149,10 @@
           <ul>
             <li><b>Usage access</b> (special access) — read screen time and app usage. Revocable in Settings → Special app access → Usage access.</li>
             <li><b>Notifications</b> — friend requests, reactions, comments and message alerts. Revocable in Settings → Apps → ChatZ → Notifications.</li>
-            <li><b>Unrestricted background activity</b> (battery optimization exemption) — so syncing isn't frozen. Revocable in Settings → Battery.</li>
+            <li><b>Unrestricted background activity</b> (battery optimization exemption) — so syncing isn't frozen and survives a reboot. Revocable in Settings → Battery.</li>
             <li><b>Internet, network &amp; Wi-Fi state</b> — connecting to Firebase and telling Wi-Fi from mobile data. Granted at install.</li>
+            <li><b>Install packages</b> — lets ChatZ install its own update after you confirm the in-app update prompt; the downloaded APK is SHA-256-checked first. Granted at install.</li>
+            <li><b>Phone state</b> (Android 6–7 only) — reads mobile-data totals for the data usage stat; never used on Android 8 or newer.</li>
           </ul>
           <p>ChatZ does not ask for camera, microphone, location, contacts, media or storage permissions — no feature needs them.</p>
         </section>
@@ -171,7 +182,7 @@
 <footer class="footer">
   <div class="container footer__base footer__base--solo">
     <span>© 2026 ChatZ. All rights reserved.</span>
-    <span><a href="index.html">Home</a> · <a href="faq.html">FAQ</a> · <a href="support.html">Support</a> · <a href="index.html#download">Download</a></span>
+    <span><a href="/">Home</a> · <a href="faq">FAQ</a> · <a href="support">Support</a> · <a href="index.html#download">Download</a></span>
   </div>
 </footer>
 

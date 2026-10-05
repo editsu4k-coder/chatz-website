@@ -22,11 +22,14 @@ Every push to `main` auto-deploys to production via the Vercel ↔ GitHub connec
 Any static server works:
 
 ```bash
-node serve.js          # → http://localhost:8321
+node serve.js          # → http://localhost:8321 (supports clean URLs like /faq)
 # or: npx serve . / python -m http.server
 ```
 
-Opening `index.html` directly from disk also works (the GitHub release fetch runs fine from `file://`).
+Internal links use Vercel's clean-URL form (`/faq`, `/privacy`, `/support`, `/`) —
+that's the single URL strategy across the site, matching `cleanUrls: true` in
+`vercel.json`. Serving from `file://` is not supported for navigation (opening
+`index.html` directly still renders the page and the GitHub release fetch works).
 
 ## Deploy
 

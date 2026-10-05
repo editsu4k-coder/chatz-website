@@ -21,10 +21,14 @@ http
   .createServer((req, res) => {
     let p = decodeURIComponent(req.url.split("?")[0]);
     if (p === "/" || p === "") p = "/index.html";
-    const file = path.join(ROOT, p);
+    let file = path.join(ROOT, p);
     if (!file.startsWith(ROOT)) {
       res.writeHead(403);
       return res.end();
+    }
+    // Clean URLs (matching Vercel's cleanUrls: true): /faq → faq.html
+    if (!path.extname(file) && !fs.existsSync(file) && fs.existsSync(file + ".html")) {
+      file += ".html";
     }
     fs.readFile(file, (err, data) => {
       if (err) {

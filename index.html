@@ -11,15 +11,21 @@
   <link rel="stylesheet" href="css/styles.css" />
 
   <!-- Open Graph / Twitter -->
+  <link rel="canonical" href="https://chatz-website.vercel.app/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="ChatZ" />
+  <meta property="og:url" content="https://chatz-website.vercel.app/" />
   <meta property="og:title" content="ChatZ — Screen time, shared with your circle" />
   <meta property="og:description" content="Share today's screen time, apps and activity with the friends you've actually accepted. No feed. No followers. No tracking." />
-  <meta property="og:image" content="assets/og.png" />
+  <meta property="og:image" content="https://chatz-website.vercel.app/assets/og.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="ChatZ — a dark app screen showing today's screen time shared with a small circle of friends" />
+  <meta property="og:locale" content="en_US" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="ChatZ — Screen time, shared with your circle" />
   <meta name="twitter:description" content="Share today's screen time, apps and activity with the friends you've actually accepted. No feed. No followers. No tracking." />
-  <meta name="twitter:image" content="assets/og.png" />
+  <meta name="twitter:image" content="https://chatz-website.vercel.app/assets/og.png" />
 </head>
 <body>
 
@@ -64,7 +70,7 @@
 <!-- ============ Navigation ============ -->
 <header class="nav" id="siteNav">
   <div class="container nav__inner">
-    <a class="brand" href="index.html" aria-label="ChatZ — home">
+    <a class="brand" href="/" aria-label="ChatZ — home">
       <span class="brand__mark" aria-hidden="true">
         <svg viewBox="0 0 120 120" width="26" height="26"><path d="M62 22c20.4 0 36 14.3 36 32 0 17.7-15.6 32-36 32-3.6 0-7.1-.5-10.3-1.3l-13.4 8.2c-1.6 1-3.7-.3-3.4-2.2l1.9-11.9C29.5 73.4 26 65.6 26 54c0-17.7 15.6-32 36-32z" fill="none" stroke="currentColor" stroke-width="6.5" stroke-linejoin="round"/><path d="M48 42h32l-22 28h22" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </span>
@@ -74,9 +80,9 @@
       <a href="#product">Product</a>
       <a href="#features">Features</a>
       <a href="#how">How it works</a>
-      <a href="privacy.html">Privacy</a>
-      <a href="faq.html">FAQ</a>
-      <a href="support.html">Support</a>
+      <a href="privacy">Privacy</a>
+      <a href="faq">FAQ</a>
+      <a href="support">Support</a>
     </nav>
     <div class="nav__actions">
       <a class="btn btn--white btn--sm" href="#download">Download</a>
@@ -90,13 +96,13 @@
       <a href="#product">Product</a>
       <a href="#features">Features</a>
       <a href="#how">How it works</a>
-      <a href="privacy.html">Privacy</a>
-      <a href="faq.html">FAQ</a>
-      <a href="support.html">Support</a>
+      <a href="privacy">Privacy</a>
+      <a href="faq">FAQ</a>
+      <a href="support">Support</a>
     </nav>
     <div class="mobile-menu__foot">
       <a class="btn btn--pink" href="#download">Download ChatZ</a>
-      <span class="mobile-menu__meta">Free · Android 6.0+ · <span data-release="version">1.7</span></span>
+      <span class="mobile-menu__meta">Free · Android 6.0+ · <span data-release="version">1.9</span></span>
     </div>
   </div>
 </header>
@@ -115,7 +121,7 @@
     <div class="hero__copy">
       <a class="hero__chip reveal-hero rh-1" href="#download">
         <span class="hero__chip-dot" aria-hidden="true"></span>
-        Free for Android · v<span data-release="version">1.7</span>
+        Free for Android · v<span data-release="version">1.9</span>
       </a>
       <h1 class="hero__title">
         <span class="hero__line reveal-hero rh-1">Your circle.</span>
@@ -429,7 +435,7 @@
           </div>
           <div class="bento__links">
             <a class="btn btn--ghost btn--sm" href="#privacy">Try the privacy controls <svg class="icon"><use href="#i-arrow-right"/></svg></a>
-            <a class="btn btn--ghost btn--sm" href="privacy.html">Read the privacy approach</a>
+            <a class="btn btn--ghost btn--sm" href="privacy">Read the privacy approach</a>
           </div>
         </div>
       </article>
@@ -549,8 +555,8 @@
                 <div class="p-friend__row">
                   <span class="p-avatar" data-avatar="ghost" data-palette="8"></span>
                   <div class="p-friend__meta"><div class="p-friend__name">Lena</div><div class="p-friend__sub">@lenaa</div></div>
-                  <span class="p-btn p-btn--primary">Accept</span>
-                  <span class="p-btn">Decline</span>
+                  <button class="p-btn p-btn--primary" type="button">Accept</button>
+                  <button class="p-btn" type="button">Decline</button>
                 </div>
               </div>
               <div id="demoFriendList">
@@ -1019,7 +1025,7 @@
       <h2 class="h2">Meet your circle<br/>on ChatZ.</h2>
       <p class="lede">Free for Android 6.0+. Download the APK, install, sign in with Google — that's it.</p>
       <div class="dl__ctas">
-        <a class="btn btn--pink btn--xl magnetic" id="dlButton" data-release="download" href="https://github.com/editsu4k-coder/chatz/releases/download/v1.7/chatz-v1.7.apk">
+        <a class="btn btn--pink btn--xl magnetic" id="dlButton" data-release="download" href="https://github.com/editsu4k-coder/chatz/releases/download/v1.9/chatz-v1.9.apk">
           <svg class="icon"><use href="#i-download"/></svg>
           Download for Android
         </a>
@@ -1029,27 +1035,24 @@
         </button>
       </div>
       <p class="dl__meta">
-        <span data-release="version">1.7</span> · <span data-release="size">8.8 MB</span> · released <span data-release="date">Oct 2, 2026</span>
+        <span data-release="version">1.9</span> · <span data-release="size">8.8 MB</span> · released <span data-release="date">Oct 4, 2026</span>
         · SHA-256 verified
       </p>
 
       <div class="release" id="releaseCard" hidden>
         <div class="release__head">
           <div>
-            <div class="release__title">ChatZ <span data-release="version">1.7</span></div>
-            <div class="release__date">Released <span data-release="date">Oct 2, 2026</span> · via GitHub Releases</div>
+            <div class="release__title">ChatZ <span data-release="version">1.9</span></div>
+            <div class="release__date">Released <span data-release="date">Oct 4, 2026</span> · via GitHub Releases</div>
           </div>
           <span class="release__badge"><svg class="icon"><use href="#i-shield-check"/></svg>Latest</span>
         </div>
         <ul class="release__notes" id="releaseNotes">
-          <li>Restricted-settings guidance</li>
-          <li>Floating update card</li>
-          <li>Honest not-syncing stats state</li>
-          <li>Toggle flicker fix</li>
+          <li>Catch-up notifications: activity that lands while the OEM freezer suspends ChatZ now reaches you as one summary alert when the app wakes</li>
         </ul>
         <div class="release__sha">
           <span>SHA-256</span>
-          <code id="releaseSha">2d3077af…d6e72a</code>
+          <code id="releaseSha">1412bd30…bf106a</code>
           <button class="release__copy" type="button" id="shaCopy" aria-label="Copy full SHA-256 checksum">
             <svg class="icon"><use href="#i-copy"/></svg>
           </button>
@@ -1061,7 +1064,7 @@
         </div>
       </div>
 
-      <p class="dl__install">New to APKs? <a href="faq.html#install-apk">How to install</a> · Greyed-out toggle? <a href="support.html#restricted-settings">Allow restricted settings</a></p>
+      <p class="dl__install">New to APKs? <a href="/faq#install-apk">How to install</a> · Greyed-out toggle? <a href="/support#restricted-settings">Allow restricted settings</a></p>
     </div>
   </div>
 </section>
@@ -1074,7 +1077,7 @@
         <p class="eyebrow reveal">FAQ</p>
         <h2 class="h2 reveal">Quick answers.</h2>
       </div>
-      <a class="textlink reveal" href="faq.html">All questions
+      <a class="textlink reveal" href="faq">All questions
         <svg class="icon"><use href="#i-arrow-right"/></svg></a>
     </div>
     <div class="accordion reveal">
@@ -1108,7 +1111,7 @@
     <div class="support-band__actions">
       <a class="btn btn--white magnetic" href="mailto:chatz.org@gmail.com"><svg class="icon"><use href="#i-mail"/></svg>Email support</a>
       <a class="btn btn--ghost magnetic" href="https://t.me/Mirmajid01" target="_blank" rel="noopener noreferrer"><svg class="icon"><use href="#i-send"/></svg>Telegram</a>
-      <a class="textlink" href="support.html">Help centre<svg class="icon"><use href="#i-arrow-right"/></svg></a>
+      <a class="textlink" href="support">Help centre<svg class="icon"><use href="#i-arrow-right"/></svg></a>
     </div>
   </div>
 </section>
@@ -1119,7 +1122,7 @@
 <footer class="footer">
   <div class="container footer__inner">
     <div class="footer__brand">
-      <a class="brand" href="index.html" aria-label="ChatZ — home">
+      <a class="brand" href="/" aria-label="ChatZ — home">
         <span class="brand__mark" aria-hidden="true">
           <svg viewBox="0 0 120 120" width="26" height="26"><path d="M62 22c20.4 0 36 14.3 36 32 0 17.7-15.6 32-36 32-3.6 0-7.1-.5-10.3-1.3l-13.4 8.2c-1.6 1-3.7-.3-3.4-2.2l1.9-11.9C29.5 73.4 26 65.6 26 54c0-17.7 15.6-32 36-32z" fill="none" stroke="currentColor" stroke-width="6.5" stroke-linejoin="round"/><path d="M48 42h32l-22 28h22" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </span>
@@ -1137,9 +1140,9 @@
       </div>
       <div>
         <h4>Resources</h4>
-        <a href="faq.html">FAQ</a>
-        <a href="privacy.html">Privacy</a>
-        <a href="support.html">Support</a>
+        <a href="faq">FAQ</a>
+        <a href="privacy">Privacy</a>
+        <a href="support">Support</a>
         <a href="https://github.com/editsu4k-coder/chatz/releases" target="_blank" rel="noopener noreferrer">Release notes</a>
       </div>
       <div>
@@ -1151,7 +1154,7 @@
   </div>
   <div class="container footer__base">
     <span>© 2026 ChatZ. All rights reserved.</span>
-    <span>v<span data-release="version">1.7</span> · <a href="privacy.html">Privacy</a> · <a href="faq.html">FAQ</a></span>
+    <span>v<span data-release="version">1.9</span> · <a href="privacy">Privacy</a> · <a href="faq">FAQ</a></span>
   </div>
 </footer>
 

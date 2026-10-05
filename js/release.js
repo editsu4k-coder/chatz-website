@@ -36,15 +36,29 @@
   function parseNotes(body) {
     if (!body) return [];
     var items = [];
-    body.trim().split(/\r?\n|·/).forEach(function (line) {
+    var push = function (part) {
+      part = part.trim().replace(/\.$/, "");
+      if (part.length > 2 && part.length <= 200 && items.indexOf(part) === -1) items.push(part);
+    };
+    body.trim().split(/\r?\n/).forEach(function (line) {
       line = line.trim().replace(/^[-*•]\s*/, "").replace(/^\d+[.)]\s*/, "");
-      line.split(/,\s*/).forEach(function (part) {
-        part = part.trim().replace(/\.$/, "");
-        if (part.length > 2 && part.length < 90) items.push(part);
+      if (!line) return;
+      var parts = line.split(/\s*·\s*/);
+      parts.forEach(function (part) {
+        // A comma-list ("A, B, C" with every item short) becomes one note per
+        // item; sentences that merely contain commas stay whole.
+        var bits = part.split(/,\s*/);
+        if (bits.length > 1 && bits.every(function (b) { return b.trim().length >= 3 && b.trim().length <= 60; })) {
+          bits.forEach(push);
+        } else {
+          push(part);
+        }
       });
     });
     return items.slice(0, 6);
   }
+
+  var currentSha = null;
 
   function apply(rel) {
     if (!rel) return;
@@ -59,24 +73,9 @@
 
     var shaEl = document.getElementById("releaseSha");
     if (shaEl && rel.sha256) {
+      currentSha = rel.sha256;
       shaEl.textContent = rel.sha256.slice(0, 8) + "…" + rel.sha256.slice(-6);
       shaEl.title = rel.sha256;
-      var copy = document.getElementById("shaCopy");
-      if (copy) {
-        copy.addEventListener("click", function () {
-          var done = function () {
-            copy.classList.add("is-copied");
-            copy.innerHTML = '<svg class="icon"><use href="#i-check"/></svg>';
-            setTimeout(function () {
-              copy.innerHTML = '<svg class="icon"><use href="#i-copy"/></svg>';
-              copy.classList.remove("is-copied");
-            }, 1400);
-          };
-          if (navigator.clipboard && navigator.clipboard.writeText) {
-            navigator.clipboard.writeText(rel.sha256).then(done, done);
-          } else { done(); }
-        });
-      }
     }
 
     var notes = rel.notes;
@@ -90,6 +89,42 @@
         list.appendChild(li);
       });
     }
+  }
+
+  /* Copy button — bound once, reads the live checksum, honest about failure. */
+  var copyBtn = document.getElementById("shaCopy");
+  if (copyBtn) {
+    copyBtn.addEventListener("click", function () {
+      var flash = function (ok) {
+        copyBtn.classList.add(ok ? "is-copied" : "is-error");
+        copyBtn.innerHTML = '<svg class="icon"><use href="#' + (ok ? "i-check" : "i-x") + '"/></svg>';
+        copyBtn.setAttribute("aria-label", ok ? "Checksum copied" : "Copy failed — select the checksum text instead");
+        setTimeout(function () {
+          copyBtn.innerHTML = '<svg class="icon"><use href="#i-copy"/></svg>';
+          copyBtn.classList.remove("is-copied", "is-error");
+          copyBtn.setAttribute("aria-label", "Copy full SHA-256 checksum");
+        }, 1600);
+      };
+      if (!currentSha) return;
+      var fallbackCopy = function () {
+        try {
+          var ta = document.createElement("textarea");
+          ta.value = currentSha;
+          ta.setAttribute("readonly", "");
+          ta.style.cssText = "position:fixed;left:-9999px";
+          document.body.appendChild(ta);
+          ta.select();
+          var ok = document.execCommand("copy");
+          document.body.removeChild(ta);
+          flash(ok);
+        } catch (e) { flash(false); }
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(currentSha).then(function () { flash(true); }, fallbackCopy);
+      } else {
+        fallbackCopy();
+      }
+    });
   }
 
   /* Start from the configured fallback so the page is never empty,

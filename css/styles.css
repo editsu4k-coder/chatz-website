@@ -24,7 +24,7 @@
   /* Type */
   --t1: #f5f4f1;
   --t2: #a9a8a4;
-  --t3: #72716d;
+  --t3: #7f7e79;
 
   /* Accent — the ChatZ app pink */
   --accent: #f263ab;
@@ -366,7 +366,7 @@ h1, h2, h3, h4 { line-height: 1.12; text-wrap: balance; }
   white-space: nowrap;
 }
 .hero-chip b { color: var(--t1); font-weight: 620; }
-.hero-chip--a { top: 13%; left: max(0%, calc(50% - 330px)); animation-delay: 0.9s, 2s; }
+.hero-chip--a { top: 5%; left: max(0%, calc(50% - 355px)); animation-delay: 0.9s, 2s; }
 .hero-chip--b { bottom: 21%; left: max(-2%, calc(50% - 345px)); animation-delay: 1.05s, 2.6s; }
 .hero-chip--c { top: 30%; right: max(-2%, calc(50% - 335px)); animation-delay: 1.2s, 2.3s; }
 @keyframes chipFloat { 0%, 100% { margin-top: 0; } 50% { margin-top: -9px; } }
@@ -1267,6 +1267,7 @@ h1, h2, h3, h4 { line-height: 1.12; text-wrap: balance; }
 .is-silent .p-today__goal { color: #8d8c90; }
 
 .release__copy.is-copied { color: var(--ok) !important; border-color: rgba(91, 198, 99, 0.4) !important; }
+.release__copy.is-error { color: #e8564e !important; border-color: rgba(232, 86, 78, 0.4) !important; }
 
 /* ---------- 404 ---------- */
 .nf { min-height: 100vh; display: grid; place-items: center; padding: 24px; }

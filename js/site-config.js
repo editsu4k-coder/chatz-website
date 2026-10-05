@@ -18,20 +18,17 @@ window.CHATZ_CONFIG = {
   // Only assets matching this are treated as the downloadable APK.
   apkAssetPattern: "\\.apk$",
 
-  // Static fallback (verified 2026-10-02 against the live release).
+  // Static fallback (verified 2026-10-05 against release v1.9).
   fallbackRelease: {
-    version: "1.7",
-    tag: "v1.7",
-    releaseDate: "2026-10-02",
-    apkSizeBytes: 8812644,
+    version: "1.9",
+    tag: "v1.9",
+    releaseDate: "2026-10-04",
+    apkSizeBytes: 8816012,
     downloadUrl:
-      "https://github.com/editsu4k-coder/chatz/releases/download/v1.7/chatz-v1.7.apk",
-    sha256: "2d3077afa8832d83fc4f2b61e43dc05049a5960fb6be3726dc54d1a3a2d6e72a",
+      "https://github.com/editsu4k-coder/chatz/releases/download/v1.9/chatz-v1.9.apk",
+    sha256: "1412bd30cff48752da18e4e7e4cdaa5778c6ff4dd2b69a36865cc82f51bf106a",
     notes: [
-      "Restricted-settings guidance",
-      "Floating update card",
-      "Honest not-syncing stats state",
-      "Toggle flicker fix",
+      "Catch-up notifications: activity that lands while the OEM freezer suspends ChatZ now reaches you as one summary alert when the app wakes",
     ],
     releasePage: "https://github.com/editsu4k-coder/chatz/releases",
   },

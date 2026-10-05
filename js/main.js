@@ -257,13 +257,21 @@
   /* ============================ Magnetic buttons ============================ */
   if (FINE_POINTER && !REDUCED) {
     document.querySelectorAll(".magnetic").forEach(function (btn) {
+      var raf = null, lx = 0, ly = 0;
       btn.addEventListener("pointermove", function (e) {
         var r = btn.getBoundingClientRect();
-        var x = (e.clientX - r.left - r.width / 2) / (r.width / 2);
-        var y = (e.clientY - r.top - r.height / 2) / (r.height / 2);
-        btn.style.transform = "translate(" + x * 3 + "px," + (y * 3 - 1) + "px)";
+        lx = (e.clientX - r.left - r.width / 2) / (r.width / 2);
+        ly = (e.clientY - r.top - r.height / 2) / (r.height / 2);
+        if (raf) return;
+        raf = requestAnimationFrame(function () {
+          raf = null;
+          btn.style.transform = "translate(" + lx * 3 + "px," + (ly * 3 - 1) + "px)";
+        });
       });
-      btn.addEventListener("pointerleave", function () { btn.style.transform = ""; });
+      btn.addEventListener("pointerleave", function () {
+        if (raf) { cancelAnimationFrame(raf); raf = null; }
+        btn.style.transform = "";
+      });
     });
   }
 
@@ -369,7 +377,32 @@
   });
   document.addEventListener("click", function (e) {
     var b = e.target.closest("[data-demo-mode]");
-    if (b) { state.mode = b.dataset.demoMode; applyState(); }
+    if (b) { state.mode = b.dataset.demoMode; applyState(); return; }
+
+    /* Demo friend request: Accept / Decline actually do something */
+    var reqBtn = e.target.closest(".p-request .p-btn");
+    if (reqBtn) {
+      var card = reqBtn.closest(".p-request");
+      if (!card || card.dataset.reqDone) return;
+      card.dataset.reqDone = "1";
+      var label = card.querySelector(".p-card__label");
+      var row = card.querySelector(".p-friend__row");
+      if (reqBtn.classList.contains("p-btn--primary")) {
+        if (label) label.textContent = "Request accepted";
+        if (row) {
+          row.querySelectorAll(".p-btn").forEach(function (x) { x.remove(); });
+          var chip = document.createElement("span");
+          chip.className = "p-chip";
+          chip.innerHTML = '<svg class="icon"><use href="#i-check"/></svg>Friends';
+          row.appendChild(chip);
+        }
+      } else {
+        card.style.transition = "opacity .3s var(--ease), transform .3s var(--ease)";
+        card.style.opacity = "0";
+        card.style.transform = "scale(.97)";
+        setTimeout(function () { card.hidden = true; }, 280);
+      }
+    }
   });
   applyState();
 
@@ -395,12 +428,29 @@
       tabs.forEach(function (t, i) {
         t.classList.toggle("is-active", i === idx);
         t.setAttribute("aria-selected", String(i === idx));
+        t.tabIndex = i === idx ? 0 : -1;
       });
       current = idx;
     }
     tabs.forEach(function (t, i) {
       t.addEventListener("click", function () { goto(i); });
+      t.tabIndex = i === 0 ? 0 : -1;
     });
+    /* Roving tabindex + arrow keys (WAI-ARIA tabs pattern) */
+    var tablist = document.querySelector(".demo__tabs");
+    if (tablist) {
+      tablist.addEventListener("keydown", function (e) {
+        var idx = null;
+        if (e.key === "ArrowRight" || e.key === "ArrowDown") idx = (current + 1) % tabs.length;
+        else if (e.key === "ArrowLeft" || e.key === "ArrowUp") idx = (current - 1 + tabs.length) % tabs.length;
+        else if (e.key === "Home") idx = 0;
+        else if (e.key === "End") idx = tabs.length - 1;
+        if (idx === null) return;
+        e.preventDefault();
+        goto(idx);
+        tabs[idx].focus();
+      });
+    }
 
     /* Friend cards → Usage screen */
     var FRIENDS = {
@@ -435,6 +485,7 @@
       var list = document.getElementById("demoFriendList");
       var emptyNote = document.createElement("p");
       emptyNote.className = "p-note";
+      emptyNote.setAttribute("role", "status");
       emptyNote.textContent = "No results — try a different @handle or name.";
       emptyNote.hidden = true;
       list.after(emptyNote);
@@ -519,6 +570,7 @@
     var groups = Array.prototype.slice.call(document.querySelectorAll(".doc__body .faq-group"));
     var noneNote = document.createElement("p");
     noneNote.className = "faq-count";
+    noneNote.setAttribute("role", "status");
     noneNote.textContent = "No matches — try a different word, or contact support below.";
     noneNote.hidden = true;
     var foot = document.querySelector(".faq-foot");
