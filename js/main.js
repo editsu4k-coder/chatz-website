@@ -155,6 +155,7 @@
   var nav = document.getElementById("siteNav");
   var burger = document.querySelector(".nav__burger");
   var menu = document.getElementById("mobileMenu");
+  var lockY = 0;
 
   function onScroll() {
     if (nav) nav.classList.toggle("is-scrolled", window.scrollY > 10);
@@ -170,7 +171,12 @@
       burger.setAttribute("aria-expanded", String(open));
       burger.setAttribute("aria-label", open ? "Close menu" : "Open menu");
       menu.classList.toggle("is-open", open);
+      if (open) lockY = window.scrollY;
       document.body.style.overflow = open ? "hidden" : "";
+      /* overflow:hidden can clamp the viewport scroll offset in some engines;
+         put it back so the exact position survives open/close cycles.
+         Instant, not smooth: the restore must land atomically. */
+      if (window.scrollY !== lockY) window.scrollTo({ top: lockY, behavior: "instant" });
     };
     burger.addEventListener("click", function () {
       setMenu(burger.getAttribute("aria-expanded") !== "true");
@@ -540,24 +546,54 @@
     });
   }
 
-  /* ======================= FAQ accordion (smooth height) ======================= */
+  /* ======================= FAQ accordion (smooth height) =======================
+     Every tap supersedes the item's in-flight animation: it is cancelled and
+     a fresh one starts from the CURRENT rendered height, so rapid tapping
+     never queues animations, thrashes layout with repeated measurements, or
+     leaves a stuck height/icon. The [open] attribute stays the single source
+     of truth (it also drives the plus icon). */
   document.querySelectorAll(".acc").forEach(function (acc) {
     var summary = acc.querySelector("summary");
     var body = acc.querySelector(".acc__body");
     if (!summary || !body) return;
+    var anim = null;
+
+    var currentHeight = function () {
+      var h = parseFloat(getComputedStyle(body).height);
+      return isNaN(h) ? 0 : h;
+    };
+
     summary.addEventListener("click", function (e) {
       e.preventDefault();
-      if (REDUCED) { acc.open = !acc.open; return; }
-      if (acc.open) {
-        var h = body.offsetHeight;
-        body.animate([{ height: h + "px", opacity: 1 }, { height: "0px", opacity: 0 }],
-          { duration: 260, easing: "cubic-bezier(.22,1,.36,1)" })
-          .onfinish = function () { acc.open = false; };
+      if (REDUCED) {
+        if (anim) { anim.cancel(); anim = null; }
+        acc.open = !acc.open;
+        return;
+      }
+
+      var midHeight = currentHeight();          // value while any in-flight animation still applies
+      var wasClosing = !!(anim && anim.__closing);
+      if (anim) { anim.cancel(); anim = null; }
+
+      if (acc.open && !wasClosing) {
+        /* Exit — from full height when fresh, from mid-flight when re-tapped. */
+        var full = body.offsetHeight;
+        anim = body.animate(
+          [{ height: midHeight + "px", opacity: full ? midHeight / full : 1 }, { height: "0px", opacity: 0 }],
+          { duration: 220, easing: "cubic-bezier(.22,1,.36,1)" }
+        );
+        anim.__closing = true;
+        anim.onfinish = function () { anim = null; acc.open = false; };
       } else {
-        acc.open = true;
-        var h2 = body.offsetHeight;
-        body.animate([{ height: "0px", opacity: 0 }, { height: h2 + "px", opacity: 1 }],
-          { duration: 320, easing: "cubic-bezier(.22,1,.36,1)" });
+        /* Enter — also resumes seamlessly when a closing animation was cut short. */
+        if (!acc.open) acc.open = true;
+        var fullOpen = body.offsetHeight;
+        anim = body.animate(
+          [{ height: Math.min(midHeight, fullOpen) + "px", opacity: fullOpen ? midHeight / fullOpen : 1 }, { height: fullOpen + "px", opacity: 1 }],
+          { duration: 260, easing: "cubic-bezier(.22,1,.36,1)" }
+        );
+        anim.__closing = false;
+        anim.onfinish = function () { anim = null; };
       }
     });
   });
@@ -607,4 +643,39 @@
   }
   openHashTarget();
   window.addEventListener("hashchange", openHashTarget);
+
+  /* ======================= Privacy TOC (collapsible on mobile) =======================
+     Desktop (>=960px): persistent sticky sidebar — the summary is inert.
+     Mobile: "ON THIS PAGE ▼" disclosure — tapping a link closes it and
+     re-scrolls, because collapsing the list shifts the target upward. */
+  var tocNav = document.querySelector(".doc__toc");
+  if (tocNav) {
+    var tocDetails = tocNav.querySelector("details");
+    var tocMq = window.matchMedia("(min-width: 960px)");
+    var tocSyncDesktop = function () { if (tocMq.matches) tocDetails.open = true; };
+    tocSyncDesktop();
+    if (tocMq.addEventListener) tocMq.addEventListener("change", tocSyncDesktop);
+    else if (tocMq.addListener) tocMq.addListener(tocSyncDesktop);
+    tocNav.addEventListener("click", function (e) {
+      if (tocMq.matches) {
+        if (e.target.closest("summary")) e.preventDefault(); /* never collapse on desktop */
+        return;
+      }
+      var link = e.target.closest("a");
+      if (!link) return;
+      /* Suppress the native fragment scroll: it targets the element's
+         PRE-collapse document position and finishes after our re-scroll,
+         overshooting by the collapsed TOC height. */
+      e.preventDefault();
+      tocDetails.open = false;
+      var href = link.getAttribute("href");
+      var target = document.querySelector(href);
+      if (target) {
+        setTimeout(function () {
+          target.scrollIntoView({ behavior: REDUCED ? "auto" : "smooth", block: "start" });
+          history.pushState(null, "", href); /* shareable URL without scrolling */
+        }, 80);
+      }
+    });
+  }
 })();

@@ -35,6 +35,7 @@
   <symbol id="i-mail" viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></symbol>
   <symbol id="i-send" viewBox="0 0 24 24"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></symbol>
   <symbol id="i-buoy" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><line x1="4.93" y1="4.93" x2="9.17" y2="9.17"/><line x1="14.83" y1="14.83" x2="19.07" y2="19.07"/><line x1="14.83" y1="9.17" x2="19.07" y2="4.93"/><line x1="4.93" y1="19.07" x2="9.17" y2="14.83"/></symbol>
+  <symbol id="i-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></symbol>
   <symbol id="i-download" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></symbol>
 </svg>
 
@@ -47,35 +48,37 @@
       <span class="brand__word">Chat<b>Z</b></span>
     </a>
     <nav class="nav__links" aria-label="Primary">
-      <a href="index.html#product">Product</a>
-      <a href="index.html#features">Features</a>
-      <a href="index.html#how">How it works</a>
+      <a href="/#product">Product</a>
+      <a href="/#features">Features</a>
+      <a href="/#how">How it works</a>
       <a href="privacy" aria-current="page">Privacy</a>
       <a href="faq">FAQ</a>
       <a href="support">Support</a>
     </nav>
     <div class="nav__actions">
-      <a class="btn btn--white btn--sm" href="index.html#download">Download</a>
+      <a class="btn btn--white btn--sm" href="/#download">Download</a>
       <button class="nav__burger" type="button" aria-expanded="false" aria-controls="mobileMenu" aria-label="Open menu">
         <span></span><span></span>
       </button>
     </div>
   </div>
-  <div class="mobile-menu" id="mobileMenu">
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
     <nav class="mobile-menu__links" aria-label="Mobile">
-      <a href="index.html#product">Product</a>
-      <a href="index.html#features">Features</a>
-      <a href="index.html#how">How it works</a>
+      <a href="/#product">Product</a>
+      <a href="/#features">Features</a>
+      <a href="/#how">How it works</a>
       <a href="privacy">Privacy</a>
       <a href="faq">FAQ</a>
       <a href="support">Support</a>
     </nav>
     <div class="mobile-menu__foot">
-      <a class="btn btn--pink" href="index.html#download">Download ChatZ</a>
+      <a class="btn btn--pink" href="/#download">Download ChatZ</a>
       <span class="mobile-menu__meta">Free · Android 6.0+ · <span data-release="version">1.9</span></span>
     </div>
   </div>
-</header>
+
 
 <main id="main">
   <section class="page-hero">
@@ -91,15 +94,19 @@
   <section class="section doc">
     <div class="container doc__layout">
       <nav class="doc__toc reveal" aria-label="On this page">
-        <h4>On this page</h4>
-        <a href="#what">What ChatZ is</a>
-        <a href="#collect">What we collect</a>
-        <a href="#sharing">How sharing works</a>
-        <a href="#retention">How long data is kept</a>
-        <a href="#rights">Your controls and rights</a>
-        <a href="#children">Children</a>
-        <a href="#permissions">Android permissions</a>
-        <a href="#contact">Contact</a>
+        <details>
+          <summary>On this page<svg class="icon" aria-hidden="true"><use href="#i-chevron"/></svg></summary>
+          <div class="doc__toc-list">
+            <a href="#what">What ChatZ is</a>
+            <a href="#collect">What we collect</a>
+            <a href="#sharing">How sharing works</a>
+            <a href="#retention">How long data is kept</a>
+            <a href="#rights">Your controls and rights</a>
+            <a href="#children">Children</a>
+            <a href="#permissions">Android permissions</a>
+            <a href="#contact">Contact</a>
+          </div>
+        </details>
       </nav>
 
       <article class="doc__body">
@@ -182,7 +189,7 @@
 <footer class="footer">
   <div class="container footer__base footer__base--solo">
     <span>© 2026 ChatZ. All rights reserved.</span>
-    <span><a href="/">Home</a> · <a href="faq">FAQ</a> · <a href="support">Support</a> · <a href="index.html#download">Download</a></span>
+    <span><a href="/">Home</a> · <a href="faq">FAQ</a> · <a href="support">Support</a> · <a href="/#download">Download</a></span>
   </div>
 </footer>
 

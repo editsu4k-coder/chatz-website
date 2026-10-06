@@ -46,35 +46,37 @@
       <span class="brand__word">Chat<b>Z</b></span>
     </a>
     <nav class="nav__links" aria-label="Primary">
-      <a href="index.html#product">Product</a>
-      <a href="index.html#features">Features</a>
-      <a href="index.html#how">How it works</a>
+      <a href="/#product">Product</a>
+      <a href="/#features">Features</a>
+      <a href="/#how">How it works</a>
       <a href="privacy">Privacy</a>
       <a href="faq" aria-current="page">FAQ</a>
       <a href="support">Support</a>
     </nav>
     <div class="nav__actions">
-      <a class="btn btn--white btn--sm" href="index.html#download">Download</a>
+      <a class="btn btn--white btn--sm" href="/#download">Download</a>
       <button class="nav__burger" type="button" aria-expanded="false" aria-controls="mobileMenu" aria-label="Open menu">
         <span></span><span></span>
       </button>
     </div>
   </div>
-  <div class="mobile-menu" id="mobileMenu">
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
     <nav class="mobile-menu__links" aria-label="Mobile">
-      <a href="index.html#product">Product</a>
-      <a href="index.html#features">Features</a>
-      <a href="index.html#how">How it works</a>
+      <a href="/#product">Product</a>
+      <a href="/#features">Features</a>
+      <a href="/#how">How it works</a>
       <a href="privacy">Privacy</a>
       <a href="faq">FAQ</a>
       <a href="support">Support</a>
     </nav>
     <div class="mobile-menu__foot">
-      <a class="btn btn--pink" href="index.html#download">Download ChatZ</a>
+      <a class="btn btn--pink" href="/#download">Download ChatZ</a>
       <span class="mobile-menu__meta">Free · Android 6.0+ · <span data-release="version">1.9</span></span>
     </div>
   </div>
-</header>
+
 
 <main id="main">
   <section class="page-hero">
@@ -113,7 +115,7 @@
         <details class="acc reveal"><summary>What do my friends see about me?<span class="acc__icon"><svg class="icon"><use href="#i-plus"/></svg></span></summary>
           <div class="acc__body"><p>Only what you allow in Profile → Privacy, and only today's summary — never your bio, date of birth or education. A category you switch off isn't shown to friends at all (no “0”, no old value — it's simply absent), and it's removed from your stored snapshot right away. In Silent mode, friends see “Stats sharing is paused” instead of any numbers.</p></div></details>
         <details class="acc reveal"><summary>Can I control what friends see?<span class="acc__icon"><svg class="icon"><use href="#i-plus"/></svg></span></summary>
-          <div class="acc__body"><p>Yes, per category. Screen time, app usage, data usage and active status each have their own switch in Profile → Privacy, and the Active / Silent mode switch pauses everything at once. Enforcement is server-side: what you turn off can't be read by anyone, not just hidden in the app's interface. <a href="index.html#privacy">Try the interactive demo</a> on the home page.</p></div></details>
+          <div class="acc__body"><p>Yes, per category. Screen time, app usage, data usage and active status each have their own switch in Profile → Privacy, and the Active / Silent mode switch pauses everything at once. Enforcement is server-side: what you turn off can't be read by anyone, not just hidden in the app's interface. <a href="/#privacy">Try the interactive demo</a> on the home page.</p></div></details>
         <details class="acc reveal"><summary>What's the difference between Active and Silent mode?<span class="acc__icon"><svg class="icon"><use href="#i-plus"/></svg></span></summary>
           <div class="acc__body"><p>The mode control is on your Home dashboard. Active (the default) shares today's stats with your friends according to your individual category switches — Active never overrides a category you've switched off. Silent immediately stops all stat sharing: friends see a “Stats sharing is paused” notice instead of your numbers, and you appear offline while Silent is on. Switching back to Active restores exactly what you had switched on — Silent never changes your category settings.</p></div></details>
         <details class="acc reveal"><summary>Can people who aren't my friends see my stats?<span class="acc__icon"><svg class="icon"><use href="#i-plus"/></svg></span></summary>
@@ -122,14 +124,14 @@
         <h2 class="faq-group reveal">Installation &amp; updates</h2>
         <details class="acc reveal" id="install-apk"><summary>How do I install the APK?<span class="acc__icon"><svg class="icon"><use href="#i-plus"/></svg></span></summary>
           <div class="acc__body"><ol>
-            <li>Tap <a href="index.html#download">Download for Android</a> and open the downloaded APK.</li>
+            <li>Tap <a href="/#download">Download for Android</a> and open the downloaded APK.</li>
             <li>Android will ask to allow installs from your browser or file manager — allow it for this install.</li>
             <li>Tap Install, then open ChatZ and sign in with Google.</li>
           </ol><p>Only download ChatZ from this website or the official GitHub Releases page — the download is SHA-256 checksummed so you can verify it.</p></div></details>
         <details class="acc reveal"><summary>Why does ChatZ request Screen Time / Usage Access?<span class="acc__icon"><svg class="icon"><use href="#i-plus"/></svg></span></summary>
           <div class="acc__body"><p>Real screen-time numbers can only be read with Android's Usage access permission — it's a special access grant, not a regular permission. ChatZ uses it solely to build your daily summary on your device; raw per-app lists, screenshots, browser history, messages and credentials are never uploaded. Without it, ChatZ shows an honest “no access” state instead of fake numbers.</p></div></details>
         <details class="acc reveal"><summary>Why might Android ask me to allow restricted settings?<span class="acc__icon"><svg class="icon"><use href="#i-plus"/></svg></span></summary>
-          <div class="acc__body"><p>Android 13+ blocks sensitive permissions — like Usage access — for apps installed outside the Play Store, so the toggle can look greyed out with a “Restricted setting” warning. That's Android being careful with sideloaded apps, not a problem with ChatZ. You unlock it once per device: <b>App info → ⋮ menu → Allow restricted settings</b>, confirm with your PIN or fingerprint, then toggle Usage access on. <a href="support.html#restricted-settings">Full walkthrough</a>.</p></div></details>
+          <div class="acc__body"><p>Android 13+ blocks sensitive permissions — like Usage access — for apps installed outside the Play Store, so the toggle can look greyed out with a “Restricted setting” warning. That's Android being careful with sideloaded apps, not a problem with ChatZ. You unlock it once per device: <b>App info → ⋮ menu → Allow restricted settings</b>, confirm with your PIN or fingerprint, then toggle Usage access on. <a href="/support#restricted-settings">Full walkthrough</a>.</p></div></details>
         <details class="acc reveal"><summary>How are updates delivered?<span class="acc__icon"><svg class="icon"><use href="#i-plus"/></svg></span></summary>
           <div class="acc__body"><p>ChatZ checks for updates automatically and shows a card when a new version is available — new builds ship on the <a href="https://github.com/editsu4k-coder/chatz/releases" target="_blank" rel="noopener noreferrer">GitHub Releases page</a>, and the app verifies each download's SHA-256 checksum before installing. You can always grab the latest APK from this website too.</p></div></details>
         <details class="acc reveal"><summary>ChatZ won't install — what now?<span class="acc__icon"><svg class="icon"><use href="#i-plus"/></svg></span></summary>
@@ -173,7 +175,7 @@
 <footer class="footer">
   <div class="container footer__base footer__base--solo">
     <span>© 2026 ChatZ. All rights reserved.</span>
-    <span><a href="/">Home</a> · <a href="privacy">Privacy</a> · <a href="support">Support</a> · <a href="index.html#download">Download</a></span>
+    <span><a href="/">Home</a> · <a href="privacy">Privacy</a> · <a href="support">Support</a> · <a href="/#download">Download</a></span>
   </div>
 </footer>
 
